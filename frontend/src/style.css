@@ -141,7 +141,7 @@ button span:before, button span:after
   width: 40px;
   background-color: #fff;
 }
-.jumbotron{
+.header{
   background: #000000;
   text-align: center;
 /*                background-color: #000000;*/
@@ -166,4 +166,8 @@ button span:before, button span:after
 .genre-component{
 	height: 400px; 
 	background-color: lemonchiffon;
+}
+
+body{
+	background-color: #000000;
 }
