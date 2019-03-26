@@ -142,9 +142,28 @@ button span:before, button span:after
   background-color: #fff;
 }
 .jumbotron{
-  background: rgba(25,20,20,0.8);
+  background: #000000;
   text-align: center;
 /*                background-color: #000000;*/
   color: white;
   
+}
+.search-box{
+	height: 400px; 
+	background-color: lightpink;
+}
+.check-box{
+	background-color: aquamarine;
+}
+.song-component{
+	height: 400px; 
+	background-color: aqua;
+}
+.artist-component{
+	height: 400px; 
+	background-color: lightcoral;
+}
+.genre-component{
+	height: 400px; 
+	background-color: lemonchiffon;
 }

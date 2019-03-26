@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './style.css';
 
 class App extends Component {
   render() {
@@ -24,9 +24,9 @@ class App extends Component {
             <h1>Music Recommendation using Spotify API</h1>
         </div>
         
-
-        <div class='row' style="height: 400px; background-color: lightpink;">
-            <div class="col-md-8 pr-md-1" style="height: 100%">
+		{/* search box */}
+        <div class='row search-box'>
+            <div class="col-md-8 pr-md-1">
                 <form method='get' action=''>
                     <div class='tb'>
                         <div class='td'><input type='text' placeholder='Search' required/></div>
@@ -39,17 +39,17 @@ class App extends Component {
                     </div>
                 </form>
             </div>
-            <div class="col-md-4 pl-md-2" style="background-color: aquamarine">Checkbox</div>
+            <div class="col-md-4 pl-md-2 check-box">Checkbox</div>
         </div>
         
-
-        <div class="row" style="height: 400px; background-color: aqua;">Songs</div>
+		{/* song */}
+        <div class="row song-component">Songs</div>
         
+		{/* artist */}
+        <div class="row artist-component">Artists</div>
 
-        <div class="row" style="height: 400px; background-color: lightcoral;">Artists</div>
-
-
-        <div class="row" style="height: 400px; background-color: lemonchiffon;">Genre</div>
+		{/* genre */}
+        <div class="row genre-component">Genre</div>
         
     </div>
     </body>
