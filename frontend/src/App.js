@@ -5,6 +5,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
+	<div>
     <head>
         <title>Music Recommendation using Spotify API</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -28,7 +29,7 @@ class App extends Component {
             <div class="col-md-8 pr-md-1" style="height: 100%">
                 <form method='get' action=''>
                     <div class='tb'>
-                        <div class='td'><input type='text' placeholder='Search' required></div>
+                        <div class='td'><input type='text' placeholder='Search' required/></div>
                         <div class='td' id='s-cover'>
                             <button type='submit'>
                                 <div id="s-circle"></div>
@@ -52,7 +53,8 @@ class App extends Component {
         
     </div>
     </body>
-{/*       
+	</div>
+	/*       
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -68,7 +70,7 @@ class App extends Component {
             Learn React
           </a>
         </header>
-      </div> */}
+      </div> */
     );
   }
 }
