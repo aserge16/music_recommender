@@ -1,14 +1,16 @@
 const axios = require('axios')
 
 const getAccessToken = async () => {
-    var headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic N2NjMjU4MmEwNWZhNDkzZjhhZTQ1NzI3MzkzODI5ZmU6ZWU1ZGFiN2ZmNGFjNDhhMjg4ZDIyMDE3YjU1OGU5YWU=' 
-    }
     try {
-        return await axios.post('https://accounts.spotify.com/api/token',
-            'grant_type': 'client_credentials',
-            'Authorization': 'Basic N2NjMjU4MmEwNWZhNDkzZjhhZTQ1NzI3MzkzODI5ZmU6ZWU1ZGFiN2ZmNGFjNDhhMjg4ZDIyMDE3YjU1OGU5YWU=')
+        return await axios.post('https://accounts.spotify.com/api/token', {
+            headers: {
+                'Authorization': 'Basic N2NjMjU4MmEwNWZhNDkzZjhhZTQ1NzI3MzkzODI5ZmU6ZWU1ZGFiN2ZmNGFjNDhhMjg4ZDIyMDE3YjU1OGU5YWU=',
+                'grant_type': 'client_credentials'
+            },
+            data: {
+                'Content-Type': 'application/json',
+            }
+        })
     } catch (error) {
         console.error(error)
     }
