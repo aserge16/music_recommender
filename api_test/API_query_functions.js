@@ -5,10 +5,9 @@ const getAccessToken = async () => {
         return await axios.post('https://accounts.spotify.com/api/token', {
             headers: {
                 'Authorization': 'Basic N2NjMjU4MmEwNWZhNDkzZjhhZTQ1NzI3MzkzODI5ZmU6ZWU1ZGFiN2ZmNGFjNDhhMjg4ZDIyMDE3YjU1OGU5YWU=',
-                'grant_type': 'client_credentials'
             },
             data: {
-                'Content-Type': 'application/json',
+                'grant_type': 'client_credentials'
             }
         })
     } catch (error) {
