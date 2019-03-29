@@ -12,12 +12,12 @@
   font-size: 20px;
 }
 .search-col{
-  width: 65% ;
+  width: 50% ;
   border-radius: 10px;
 	background-color: lightpink;
 }
 .check-col{
-  width: 34%;
+  width: 49%;
   background-color: aquamarine;
   margin-left: 1%;
   border-radius: 10px;
@@ -72,6 +72,8 @@ body{
   justify-content: center;
   align-items: center;
   top: 0;
+  right: 0;
+  position: absolute;
 
 }
 
@@ -81,9 +83,10 @@ body{
   outline: none;
   float: left;
   padding: 0;
-  width: 80%;
+  width: 90%;
   color: white;
   font-size: 16px;
   transition: 0.4s;
   line-height: 20px;
+  border-bottom: 1px solid #1db954;
 }
