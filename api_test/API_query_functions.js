@@ -48,4 +48,28 @@ async function searchArtists(searchItem) {
     }
 }
 
+
+async function searchTracks(searchItem) {
+    const ACCESS_TOKEN = await getAccessToken();
+    try {
+        axios.get('https://api.spotify.com/v1/search', {
+            headers: {
+                Authorization: "Bearer " + ACCESS_TOKEN
+            },
+            params: {
+                q: searchItem,
+                type: "track"
+            }
+        }).then(function (res) {
+            console.log(res.data.tracks.items);
+        }).catch(function (error) {
+            console.log(error);
+        })
+    } catch (error) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+    }
+}
+
 searchArtists("queen")
+searchTracks("shotgun knees")
