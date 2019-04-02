@@ -3,8 +3,6 @@ import './style.css';
 import Header from './Header.js';
 import SearchBox from './SearchBox.js'
 
-import logo from './logo.svg';
-
 class App extends Component {
   render() {
     return (
