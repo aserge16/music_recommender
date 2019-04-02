@@ -71,17 +71,33 @@ async function searchTracks(searchItem) {
     }
 }
 
-async function getTrack(id, callback) {
-    return;
+
+async function getRecommendations(seeds, callback) {
+    const ACCESS_TOKEN = await getAccessToken();
+    try {
+        axios.get('https://api.spotify.com/v1/recommendations', {
+            headers: {
+                Authorization: "Bearer " + ACCESS_TOKEN
+            },
+            params: {
+                seed_tracks: songs,
+                seed_artists: artists,
+                seed_genres: genres
+            }
+        }).then(function (res) {
+            callback(res.data);
+            console.log(res.data);
+        }).catch(function (error) {
+            console.log(error);
+        })
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-async function getArtist(id, callback) {
-    return;
-}
+//searchArtists("queen")
+//searchTracks("shotgun knees")
+songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
+artists = '5xhFyuXigbt6RAJR7k2aDs';
+getRecommendations(songs, artists, [], (res) => console.log(res));
 
-async function getRecommendations(songs, artists, genres, callback) {
-    return;
-}
-
-searchArtists("queen")
-searchTracks("shotgun knees")
