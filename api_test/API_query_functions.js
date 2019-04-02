@@ -1,6 +1,7 @@
 var axios = require("axios");
 var CLIENT_ID = "7cc2582a05fa493f8ae45727393829fe";
 var SECRET_TOKEN = "ee5dab7ff4ac48a288d22017b558e9ae";
+var ACCESS_TOKEN = "";
 
 var encoded_token = Buffer.from(CLIENT_ID + ":" + SECRET_TOKEN)
     .toString('base64');    // encode to base64
@@ -14,7 +15,6 @@ const getAccessToken = async () => {
                 headers: {
                     Authorization: "Basic " + encoded_token,
                     "Content-Type": "application/x-www-form-urlencoded",
-                    "grant_type": "client_credentials"
                 }
             });
         ACCESS_TOKEN = response.data.access_token;
@@ -69,6 +69,18 @@ async function searchTracks(searchItem) {
         console.log(error.response.data);
         console.log(error.response.status);
     }
+}
+
+async function getTrack(id, callback) {
+    return;
+}
+
+async function getArtist(id, callback) {
+    return;
+}
+
+async function getRecommendations(songs, artists, genres, callback) {
+    return;
 }
 
 searchArtists("queen")
