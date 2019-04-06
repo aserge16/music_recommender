@@ -2,8 +2,49 @@ import React, { Component } from 'react';
 import './style.css';
 import Header from './Header.js';
 import SearchBox from './SearchBox.js'
+import TrackPreview from './TrackPreview';
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+				inputs: {
+					songs: [
+						{
+							name: "song 1",
+							id: "asdfasdfa",
+							artist: "asdfasdf",
+							imageURL: "asdfadsf"
+						},
+						{
+							name: "song 1",
+							id: "asdfasdfa",
+							artist: "asdfasdf",
+							imageURL: "asdfadsf"
+						},
+						{
+							name: "song 1",
+							id: "asdfasdfa",
+							artist: "asdfasdf",
+							imageURL: "asdfadsf"
+						}
+					],
+					artists: [
+						{
+							name: "artist 1",
+							id: "asdfasdfdsaf",
+							imageURL: "sadfasdfadsf"
+						}
+					],
+					genres: []
+				},
+			recommendations: {
+				
+			}
+		};
+	}
+
   render() {
     return (
 		<div class="container-fluid"> 
@@ -31,6 +72,7 @@ class App extends Component {
 
 			{/* genre */}
 			<div class="row genre-component">Genre</div>
+			<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
 		</div>
     );
   }

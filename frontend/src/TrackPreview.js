@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class TrackPreview extends Component{
 	render() {
+        // change the width and height as needed
 		return(
 			<div>
                 <iframe 
