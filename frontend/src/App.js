@@ -3,6 +3,7 @@ import './style.css';
 import Header from './Header.js';
 import SearchBox from './SearchBox.js'
 import TrackPreview from './TrackPreview';
+import SongList from './SongList.js';
 
 class App extends Component {
 	constructor(props) {
