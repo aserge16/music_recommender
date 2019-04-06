@@ -22,10 +22,37 @@
   margin-left: 1%;
   border-radius: 10px;
 }
+
+/* Song layout */
 .song-component{
-	height: 400px; 
-	background-color: aqua;
+	height: 250px !important; 
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: nowrap; */
+  white-space: nowrap;
+  /* justify-content: center;*/
+  align-items: center; 
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+.song-component::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.card--content {
+  background-color: #e74c3c;
+  min-width: 200px;
+  height: 200px;
+  margin: 5px;
+  display: inline-block;
+}
+
+
 .artist-component{
 	height: 400px; 
 	background-color: lightcoral;
@@ -44,6 +71,7 @@ body{
   margin:10px;
   height: auto;
   min-height: 200px;
+  flex: 1;
 }
 
 .column{
