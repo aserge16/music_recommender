@@ -42,7 +42,8 @@ body{
 .row{
   border-radius: 10px;
   margin:10px;
-  height: 400px;
+  height: auto;
+  min-height: 200px;
 }
 
 .column{

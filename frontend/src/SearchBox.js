@@ -39,7 +39,7 @@ class SearchBox extends Component{
 				<div class="column check-col">
 					<ol id="checkBox">Checklist: </ol> 
 					{this.state.songs.map((song) => 
-						<p>{song}</p>)
+						<p> {song}</p>)
 					}
 				</div>
 			</div>
