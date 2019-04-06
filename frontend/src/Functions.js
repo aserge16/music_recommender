@@ -4,5 +4,6 @@ export function addCheckBox(){
     var entry = document.createElement('li');
     entry.appendChild(document.createTextNode(song));
     check.appendChild(entry);
-    document.getElementById('search').value = ''
+	document.getElementById('search').value = ''
+	console.log("seacrhed")
 }
