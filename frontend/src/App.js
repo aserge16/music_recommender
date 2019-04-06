@@ -1,39 +1,50 @@
 import React, { Component } from 'react';
 import './style.css';
 import Header from './Header.js';
-import SearchBox from './SearchBox.js'
+import SearchBox from './SearchBox.js';
+import SongList from './SongList.js';
 
 class App extends Component {
-  render() {
-    return (
-		<div class="container-fluid"> 
-			<Header/>
-			
-			{/* search box */}
-			<SearchBox/>
-			
-			{/* song */}
-			<div class="row song-component">
-					<div class="card--content">a</div>
-					<div class="card--content">b</div>
-					<div class="card--content">c</div>
-					<div class="card--content">d</div>
-					<div class="card--content">e</div>
-					<div class="card--content">f</div>
-					<div class="card--content">g</div>
-					<div class="card--content">h</div>
-					<div class="card--content">i</div>
-					<div class="card--content">j</div>
-			</div>
-			
-			{/* artist */}
-			<div class="row artist-component">Artists</div>
+	constructor(props) {
+		super(props);
+		//this.addSong = this.addSong.bind(this);
+		this.state = {
+		  songs: [],
+		  artists: [],
+		  genres: [],
+		};
+	}	
 
-			{/* genre */}
-			<div class="row genre-component">Genre</div>
-		</div>
-    );
-  }
-}
+
+	render() {
+		return (
+			<div class="container-fluid testimonial-group"> 
+				<Header/>
+				<div className="row">
+					<div className="col">
+						{/* search box */}
+						<SearchBox/>
+						
+						{/* song */}
+						<SongList/>
+						
+						{/* artist */}
+						<div class="row artist-component">Artists</div>
+
+						{/* genre */}
+						<div class="row genre-component">Genre</div>
+					</div>
+					<div className="col-3 check-col">
+						<ol id="checkBox">Input List: </ol> 
+						{/* {this.state.songs.map((song) => 
+							<p> {song}</p>)
+						} */}
+						asfasdasd
+					</div>
+				</div>
+			</div>
+		);
+	}
+	}
 
 export default App;

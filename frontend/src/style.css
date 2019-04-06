@@ -1,10 +1,9 @@
 
 
 .header{
-  background-color: rgba(0,0,0,0.8);
+  background-color: #000000;
   text-align: center;
-/*                background-color: #000000;*/
-  color: white;
+  color: #2df02d;
   top: 0;
   left: 0;
   border-radius: 10px;
@@ -12,12 +11,12 @@
   font-size: 20px;
 }
 .search-col{
-  width: 50% ;
+  width: 100% ;
   border-radius: 10px;
-	background-color: lightpink;
+  background-color: lightpink;
 }
 .check-col{
-  width: 49%;
+  width: 100%;
   background-color: aquamarine;
   margin-left: 1%;
   border-radius: 10px;
@@ -81,8 +80,7 @@ body{
 
 .search-box{
   position: absolute;
-  left: 9%;
-  width: 30%;
+  width: 50%;
   transform: (-50%, -50%);
   background: #2f3640;
   height: 40px;
@@ -119,3 +117,13 @@ body{
   line-height: 20px;
   border-bottom: 1px solid #1db954;
 }
+
+.testimonial-group > .row {
+	overflow-x: auto;
+	white-space: nowrap;
+  }
+  
+  .testimonial-group > .row > .card--content {
+	display: inline-block;
+	float: none;
+  }
