@@ -4,6 +4,7 @@ import Header from './Header.js';
 import SearchBox from './SearchBox.js'
 import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
+import InputList from './InputList.js';
 
 class App extends Component {
 	constructor(props) {
@@ -46,42 +47,44 @@ class App extends Component {
 		};
 	}
 
-	updateInputSongs = () => {
+	// the "type" parameter specifies the type of input to be added.
+	// "songs" for adding a new song and "artists" for adding a new artist
+	addInput = (type, input) => {
+		var newState = this.state;
+		newState.inputs[type].push(input);
+		this.setState(newState);
+	}
+
+	// Call Spotify to get recommendations
+	getRecommendations = () => {
 
 	}
 
 	render() {
 		return (
-			<div class="container-fluid"> 
+			<div>
 				<Header/>
-				
 				{/* search box */}
 				<SearchBox/>
-				
-				{/* song */}
-				{/* TODO: make a new component SongView. */}
-				<div class="row song-component">
-					<div class="card--content">a</div>
-					<div class="card--content">b</div>
-					<div class="card--content">c</div>
-					<div class="card--content">d</div>
-					<div class="card--content">e</div>
-					<div class="card--content">f</div>
-					<div class="card--content">g</div>
-					<div class="card--content">h</div>
-					<div class="card--content">i</div>
-					<div class="card--content">j</div>
+				<div class="row"> 
+					<div className="col">
+						{/* song */}
+						{/* TODO: make a new component SongView. */}
+						<SongList/>
+						
+						{/* artist */}
+						{/* TODO: make a new component ArtistView. */}
+						<div class="row artist-component">Artists</div>
+
+						{/* genre */}
+						{/* TODO: make a new component GenreView. */}
+						<div class="row genre-component">Genre</div>
+
+						<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
+					</div>
+					
+					<InputList/>
 				</div>
-				
-				{/* artist */}
-				{/* TODO: make a new component ArtistView. */}
-				<div class="row artist-component">Artists</div>
-
-				{/* genre */}
-				{/* TODO: make a new component GenreView. */}
-				<div class="row genre-component">Genre</div>
-
-				<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
 			</div>
 		);
 	}
