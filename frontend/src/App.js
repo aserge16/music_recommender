@@ -10,52 +10,57 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-				inputs: {
-					songs: [
-						{
-							name: "song 1",
-							id: "asdfasdfa",
-							artist: "asdfasdf",
-							imageURL: "asdfadsf"
-						},
-						{
-							name: "song 1",
-							id: "asdfasdfa",
-							artist: "asdfasdf",
-							imageURL: "asdfadsf"
-						},
-						{
-							name: "song 1",
-							id: "asdfasdfa",
-							artist: "asdfasdf",
-							imageURL: "asdfadsf"
-						}
-					],
-					artists: [
-						{
-							name: "artist 1",
-							id: "asdfasdfdsaf",
-							imageURL: "sadfasdfadsf"
-						}
-					],
-					genres: []
-				},
+			inputs: {
+				songs: [
+					{
+						name: "song 1",
+						id: "asdfasdfa",
+						artist: ["asdfasdf"],
+						imageURL: "asdfadsf"
+					},
+					{
+						name: "song 1",
+						id: "asdfasdfa",
+						artist: ["asdfasdf"],
+						imageURL: "asdfadsf"
+					},
+					{
+						name: "song 1",
+						id: "asdfasdfa",
+						artist: "asdfasdf",
+						imageURL: "asdfadsf"
+					}
+				],
+				artists: [
+					{
+						name: "artist 1",
+						id: "asdfasdfdsaf",
+						imageURL: "sadfasdfadsf"
+					}
+				],
+				genres: []
+			},
 			recommendations: {
 				
 			}
 		};
 	}
 
-  render() {
-    return (
-		<div class="container-fluid"> 
-			<Header/>
-			
-			{/* search box */}
-			<SearchBox/>
-			
-			{/* song */}
-			<div class="row song-component">
+	updateInputSongs = () => {
+
+	}
+
+	render() {
+		return (
+			<div class="container-fluid"> 
+				<Header/>
+				
+				{/* search box */}
+				<SearchBox/>
+				
+				{/* song */}
+				{/* TODO: make a new component SongView. */}
+				<div class="row song-component">
 					<div class="card--content">a</div>
 					<div class="card--content">b</div>
 					<div class="card--content">c</div>
@@ -66,17 +71,20 @@ class App extends Component {
 					<div class="card--content">h</div>
 					<div class="card--content">i</div>
 					<div class="card--content">j</div>
-			</div>
-			
-			{/* artist */}
-			<div class="row artist-component">Artists</div>
+				</div>
+				
+				{/* artist */}
+				{/* TODO: make a new component ArtistView. */}
+				<div class="row artist-component">Artists</div>
 
-			{/* genre */}
-			<div class="row genre-component">Genre</div>
-			<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
-		</div>
-    );
-  }
+				{/* genre */}
+				{/* TODO: make a new component GenreView. */}
+				<div class="row genre-component">Genre</div>
+
+				<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
+			</div>
+		);
+	}
 }
 
 export default App;
