@@ -1,11 +1,9 @@
 var axios = require("axios");
 var CLIENT_ID = "7cc2582a05fa493f8ae45727393829fe";
 var SECRET_TOKEN = "ee5dab7ff4ac48a288d22017b558e9ae";
-var ACCESS_TOKEN = "";
 
 var encoded_token = Buffer.from(CLIENT_ID + ":" + SECRET_TOKEN)
     .toString('base64');    // encode to base64
-
 
 
 const getAccessToken = async () => {
@@ -18,7 +16,6 @@ const getAccessToken = async () => {
                 }
             });
         ACCESS_TOKEN = response.data.access_token;
-        console.log(ACCESS_TOKEN);
         return ACCESS_TOKEN;
     } catch (error) {
         console.error(error);
@@ -35,10 +32,17 @@ async function searchArtists(searchItem) {
             },
             params: {
                 q: searchItem,
-                type: "artist"
+                type: "artist",
+                limit: 15
             }
         }).then(function (res) {
-            console.log(res.data.artists.items);
+            var artists = [];
+            for (var i = 0; i < res.data.artists.items.length; i++) {
+                var item = res.data.artists.items[i];
+                var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
+                artists[i] = artist;
+            }
+            return artists;
         }).catch(function (error) {
             console.log(error);
         })
@@ -58,10 +62,21 @@ async function searchTracks(searchItem) {
             },
             params: {
                 q: searchItem,
-                type: "track"
+                type: "track",
+                limit: 15
             }
         }).then(function (res) {
-            console.log(res.data.tracks.items);
+            var tracks = [];
+            for (var i = 0; i < res.data.tracks.items.length; i++) {
+                var item = res.data.tracks.items[i];
+                var artists = [];
+                for (var j = 0; j < item.artists.length; j++) {
+                    artists[j] = item.artists[j].name;
+                }
+                var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
+                tracks[i] = track;
+            }
+            return tracks;
         }).catch(function (error) {
             console.log(error);
         })
@@ -72,10 +87,7 @@ async function searchTracks(searchItem) {
 }
 
 
-async function getRecommendations(seeds, callback) {
-    var seed_tracks = seeds.seed_tracks;
-    var seed_artists = seeds.seed_artists;
-    var seed_genres = seeds.seed_genres;
+async function getRecommendations(seed) {
     const ACCESS_TOKEN = await getAccessToken();
     try {
         axios.get('https://api.spotify.com/v1/recommendations', {
@@ -83,13 +95,23 @@ async function getRecommendations(seeds, callback) {
                 Authorization: "Bearer " + ACCESS_TOKEN
             },
             params: {
-                seed_tracks: seed_tracks,
-                seed_artists,
-                seed_genres,
+                seed_tracks: seed.songs,
+                seed_artists: seed.artists,
+                seed_genres: seed.genres,
+                limit: 15
             }
         }).then(function (res) {
-            callback(res.data);
-            console.log(res.data);
+            var tracks = [];
+            for (var i = 0; i < res.data.tracks.length; i++) {
+                var item = res.data.tracks[i];
+                var artists = [];
+                for (var j = 0; j < item.artists.length; j++) {
+                    artists[j] = item.artists[j].name;
+                }
+                var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
+                tracks[i] = track;
+            }
+            return tracks;
         }).catch(function (error) {
             console.log(error);
         })
@@ -97,6 +119,7 @@ async function getRecommendations(seeds, callback) {
         console.log(error);
     }
 }
+
 
 function getArtistWiki(name, callback) {
     axios.get("https://en.wikipedia.org/w/api.php?", {
@@ -117,15 +140,11 @@ function getArtistWiki(name, callback) {
     })
 }
 
+
 //searchArtists("queen")
 //searchTracks("shotgun knees")
-// songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
-// artists = '5xhFyuXigbt6RAJR7k2aDs';
-// seeds = {
-//     seed_tracks: songs,
-//     seed_artists: artists,
-//     seed_genres: ""
-// }
-// getRecommendations(seeds, (res) => console.log(res));
-
-getArtistWiki("Queen (band)", (res) => console.log(res));
+songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
+artists = '5xhFyuXigbt6RAJR7k2aDs';
+genres = "";
+seed = {songs:songs, artists:artists, genres:genres};
+getRecommendations(seed)
