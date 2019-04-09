@@ -97,8 +97,7 @@ class App extends Component {
 				<div class="row"> 
 					<div className="col">
 						{/* song */}
-						{/* TODO: make a new component SongView. */}
-						<SongList/>
+						<SongList songs={this.state.inputs.songs}/>
 						
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
@@ -107,8 +106,6 @@ class App extends Component {
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
 						<div class="row genre-component">Genre</div>
-
-						<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
 					</div>
 					
 					<InputList/>
