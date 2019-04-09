@@ -17,10 +17,15 @@ class SearchBox extends Component{
 		// this.addSong = this.addSong.bind(this);
 		this.updateQuery = this.updateQuery.bind(this);
 		this.toggleDropDown = this.toggleDropDown.bind(this);
+		this.typeToSong = this.typeToSong.bind(this);
+		this.typeToArtist = this.typeToArtist.bind(this);
+		this.typeToGenre = this.typeToGenre.bind(this);
+
 		this.state = {
 		  query: "",
 		  dropdownOpen: false,
 		  splitButtonOpen: false,
+		  currentType: 'Song',
 		};
 	}
 	
@@ -30,15 +35,25 @@ class SearchBox extends Component{
 	});
 	}
 
-	// addSong = (song) => {
-	// 	this.setState({
-	// 		songs: this.state.songs.concat(song.value)
-	// 	})
-	// 	song.value = ""
-	// 	console.log(this.state.songs)
-	// }
+	typeToSong = () => {
+		this.setState({
+			currentType: 'Song'
+		})
+	}
 
-	updateQuery(event) {
+	typeToArtist = () => {
+		this.setState({
+			currentType: 'Artist'
+		})
+	}
+
+	typeToGenre = () => {
+		this.setState({
+			currentType: 'Genre'
+		})
+	}
+
+	updateQuery = (event) => {
 		this.setState({
 			query: event.target.value
 		});
@@ -52,15 +67,19 @@ class SearchBox extends Component{
 					<Input onChange={this.updateQuery} />
 					<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
 						<DropdownToggle caret>
-						Type
+						{this.state.currentType}
 						</DropdownToggle>
 						<DropdownMenu>
-						<DropdownItem>Song</DropdownItem>
-						<DropdownItem>Artist</DropdownItem>
-						<DropdownItem>Genre</DropdownItem>
+						<DropdownItem onClick={this.typeToSong}>Song</DropdownItem>
+						<DropdownItem onClick={this.typeToArtist}>Artist</DropdownItem>
+						<DropdownItem onClick={this.typeToGenre}>Genre</DropdownItem>
 						</DropdownMenu>
 					</InputGroupButtonDropdown>
 				</InputGroup>
+
+				<Button style={{marginLeft: 10,}} >
+					Get
+				</Button>
 			</div>
 
 			// <div class='row'>
