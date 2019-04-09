@@ -13,30 +13,30 @@ class App extends Component {
 			inputs: {
 				songs: [
 					{
-						name: "song 1",
-						id: "asdfasdfa",
-						artist: ["asdfasdf"],
-						imageURL: "asdfadsf"
-					},
+						name: 'Where Is My Mama At',
+						id: '5zFQCsOcFOhPAHgig4W3bn',
+						artists: [ 'Elliphant' ],
+						image_url: 'https://i.scdn.co/image/debbeb4efebd8194d86ed350e66fb951e8556147' },
 					{
-						name: "song 1",
-						id: "asdfasdfa",
-						artist: ["asdfasdf"],
-						imageURL: "asdfadsf"
-					},
+						name: 'Television',
+						id: '3Qd2hv3zY6EIx9J94d7thb',
+						artists: [ 'Natalia Kills' ],
+						image_url: 'https://i.scdn.co/image/f5f5033173863e65d59c2a8d0bac2facfe37a3f0' },
 					{
-						name: "song 1",
-						id: "asdfasdfa",
-						artist: "asdfasdf",
-						imageURL: "asdfadsf"
-					}
+						name: 'God from the Machine',
+						id: '1jugG2ptzEPcLUxSbCiY4A',
+						artists: [ 'Santigold' ],
+						image_url: 'https://i.scdn.co/image/33dfdb9ff14477706fdbc694deb52d0f011c84be' }
 				],
 				artists: [
 					{
-						name: "artist 1",
-						id: "asdfasdfdsaf",
-						imageURL: "sadfasdfadsf"
-					}
+						name: 'Queen',
+  						id: '1dfeR4HaWDbWqFHLkxsg1d',
+						image_url: 'https://i.scdn.co/image/b040846ceba13c3e9c125d68389491094e7f2982' },
+					{
+						name: 'Beyoncé',
+						id: '6vWDO969PvNqNYHIOW5v0m',
+						image_url: 'https://i.scdn.co/image/673cd94546df0536954198867516fee18cee1605' }
 				],
 				genres: []
 			},
