@@ -9,7 +9,7 @@ class InputList extends Component{
 				<h3>Songs</h3>
 				{
 					this.props.songs.map((song) =>
-					<InputListElem song={song}></InputListElem>)
+					<InputListElem elem={song}></InputListElem>)
 				}
 			</div>
 		);

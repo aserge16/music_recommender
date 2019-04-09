@@ -63,11 +63,10 @@
   }
 
 .check-col{
-  width: 100%;
+  /* width: 100%; */
   background-color: aquamarine;
-  margin-left: 1%;
   border-radius: 10px;
-  margin:10px;
+  margin-top:10px;
 }
 
 /* Song layout */
@@ -111,7 +110,7 @@ body{
 	background-color: #000000;
 }
 
-.row{
+.new-row{
   border-radius: 10px;
   margin:10px;
   height: auto;
@@ -124,53 +123,13 @@ body{
   /* margin: 10px; */
 }
 
-.search-box{
-  position: absolute;
-  width: 50%;
-  transform: (-50%, -50%);
-  background: #2f3640;
-  height: 40px;
-  border-radius: 40px;
-  padding: 10px;
-}
-
-.search-btn{
-  color: #1db954;
-  float: right;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #2f3640;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  right: 0;
-  position: absolute;
-
-}
-
-.search-txt{
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  width: 90%;
-  color: white;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 20px;
-  border-bottom: 1px solid #1db954;
-}
-
 .live_scroll {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   align-items: center;
 }
-.live_scroll .row{
+.live_scroll .new-row{
   display: block;
 }
 

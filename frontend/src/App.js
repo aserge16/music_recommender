@@ -94,20 +94,20 @@ class App extends Component {
 				<Header/>
 				{/* search box */}
 				<SearchBox/>
-				<div class="row"> 
-					<div className="col-8">
+				<div class="row new-row align-items justify-content"> 
+					<div className="col-9">
 						{/* song */}
 						<SongList songs={this.state.inputs.songs}/>
 						
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
-						<div class="row artist-component">Artists</div>
+						<div class="row new-row artist-component">Artists</div>
 
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
-						<div class="row genre-component">Genre</div>
+						<div class="row new-row genre-component">Genre</div>
 					</div>
-					
+					{/* <div className="col"></div> */}
 					<InputList 
 						songs={this.state.inputs.songs} 
 						artists={this.state.inputs.artists}

@@ -5,8 +5,12 @@ import {Button} from 'reactstrap';
 class InputListElem extends Component{
 	render() {
 		return(
-			<div>
-				<p>{this.props.song.name}</p>
+			<div className="row">
+				<div className="col-10">
+					{this.props.elem.name}
+				</div>
+				
+				<Button className="col-2">x</Button>
 			</div>
 		);
 	}
