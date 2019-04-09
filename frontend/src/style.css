@@ -49,6 +49,7 @@
   height: 200px;
   margin: 5px;
   display: inline-block;
+  float: none;
 }
 
 
@@ -118,12 +119,18 @@ body{
   border-bottom: 1px solid #1db954;
 }
 
-.testimonial-group > .row {
-	overflow-x: auto;
-	white-space: nowrap;
-  }
-  
-  .testimonial-group > .row > .card--content {
-	display: inline-block;
-	float: none;
+.live_scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.live_scroll .row{
+  display: block;
+}
+
+.live_scroll card--content {
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    border: 1px solid red;
   }

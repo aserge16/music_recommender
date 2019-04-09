@@ -67,7 +67,7 @@ class App extends Component {
 				{/* search box */}
 				<SearchBox/>
 				<div class="row"> 
-					<div className="col">
+					<div className="col-8">
 						{/* song */}
 						{/* TODO: make a new component SongView. */}
 						<SongList/>
@@ -82,8 +82,9 @@ class App extends Component {
 
 						<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
 					</div>
-					
+					<div className="col-3 check-col">
 					<InputList/>
+					</div>
 				</div>
 			</div>
 		);
