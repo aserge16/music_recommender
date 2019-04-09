@@ -14,12 +14,11 @@ import './style.css';
 class SearchBox extends Component{
 	constructor(props) {
 		super(props);
-		this.addSong = this.addSong.bind(this);
+		// this.addSong = this.addSong.bind(this);
+		this.updateQuery = this.updateQuery.bind(this);
 		this.toggleDropDown = this.toggleDropDown.bind(this);
 		this.state = {
-		  songs: [],
-		  artists: [],
-		  genres: [],
+		  query: "",
 		  dropdownOpen: false,
 		  splitButtonOpen: false,
 		};
@@ -31,19 +30,26 @@ class SearchBox extends Component{
 	});
 	}
 
-	addSong = (song) => {
+	// addSong = (song) => {
+	// 	this.setState({
+	// 		songs: this.state.songs.concat(song.value)
+	// 	})
+	// 	song.value = ""
+	// 	console.log(this.state.songs)
+	// }
+
+	updateQuery(event) {
 		this.setState({
-			songs: this.state.songs.concat(song.value)
-		})
-		song.value = ""
-		console.log(this.state.songs)
+			query: event.target.value
+		});
 	}
 
 	render() {
-		return(
+		console.log(this.state.query);
+		return (
 			<div className="search-col">
 				<InputGroup>
-					<Input />
+					<Input onChange={this.updateQuery} />
 					<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
 						<DropdownToggle caret>
 						Type
