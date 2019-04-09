@@ -108,7 +108,11 @@ class App extends Component {
 						<div class="row genre-component">Genre</div>
 					</div>
 					
-					<InputList/>
+					<InputList 
+						songs={this.state.inputs.songs} 
+						artists={this.state.inputs.artists}
+						genres={this.state.inputs.genres}
+					/>
 				</div>
 			</div>
 		);
