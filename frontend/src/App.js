@@ -51,7 +51,7 @@ class App extends Component {
 	// "songs" for adding a new song and "artists" for adding a new artist
 	addInput = (type, input) => {
 		var newState = this.state;
-		new.state.inputs[type].push(input);
+		newState.inputs[type].push(input);
 		this.setState(newState);
 	}
 
