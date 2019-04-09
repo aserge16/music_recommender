@@ -16,12 +16,17 @@ class SearchBox extends Component{
 		super(props);
 		this.addSong = this.addSong.bind(this);
 		this.toggleDropDown = this.toggleDropDown.bind(this);
+		this.typeToSong = this.typeToSong.bind(this);
+		this.typeToArtist = this.typeToArtist.bind(this);
+		this.typeToGenre = this.typeToGenre.bind(this);
+
 		this.state = {
 		  songs: [],
 		  artists: [],
 		  genres: [],
 		  dropdownOpen: false,
 		  splitButtonOpen: false,
+		  currentType: 'Song',
 		};
 	}
 	
@@ -29,6 +34,24 @@ class SearchBox extends Component{
 	this.setState({
 		dropdownOpen: !this.state.dropdownOpen
 	});
+	}
+
+	typeToSong = () => {
+		this.setState({
+			currentType: 'Song'
+		})
+	}
+
+	typeToArtist = () => {
+		this.setState({
+			currentType: 'Artist'
+		})
+	}
+
+	typeToGenre = () => {
+		this.setState({
+			currentType: 'Genre'
+		})
 	}
 
 	addSong = (song) => {
@@ -42,19 +65,23 @@ class SearchBox extends Component{
 	render() {
 		return(
 			<div className="search-col">
-				<InputGroup>
+				<InputGroup className="search-box">
 					<Input />
 					<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
 						<DropdownToggle caret>
-						Type
+						{this.state.currentType}
 						</DropdownToggle>
 						<DropdownMenu>
-						<DropdownItem>Song</DropdownItem>
-						<DropdownItem>Artist</DropdownItem>
-						<DropdownItem>Genre</DropdownItem>
+						<DropdownItem onClick={this.typeToSong}>Song</DropdownItem>
+						<DropdownItem onClick={this.typeToArtist}>Artist</DropdownItem>
+						<DropdownItem onClick={this.typeToGenre}>Genre</DropdownItem>
 						</DropdownMenu>
 					</InputGroupButtonDropdown>
 				</InputGroup>
+
+				<Button style={{marginLeft: 10,}} >
+					Get
+				</Button>
 			</div>
 
 			// <div class='row'>
