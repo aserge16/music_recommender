@@ -95,7 +95,7 @@ class App extends Component {
 				{/* search box */}
 				<SearchBox/>
 				<div class="row"> 
-					<div className="col">
+					<div className="col-8">
 						{/* song */}
 						<SongList songs={this.state.inputs.songs}/>
 						
