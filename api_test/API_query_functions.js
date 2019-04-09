@@ -87,7 +87,7 @@ async function searchTracks(searchItem) {
 }
 
 
-async function getRecommendations(seeds) {
+async function getRecommendations(seed) {
     const ACCESS_TOKEN = await getAccessToken();
     try {
         axios.get('https://api.spotify.com/v1/recommendations', {
@@ -95,9 +95,9 @@ async function getRecommendations(seeds) {
                 Authorization: "Bearer " + ACCESS_TOKEN
             },
             params: {
-                seed_tracks: songs,
-                seed_artists: artists,
-                seed_genres: genres,
+                seed_tracks: seed.songs,
+                seed_artists: seed.artists,
+                seed_genres: seed.genres,
                 limit: 15
             }
         }).then(function (res) {
@@ -120,6 +120,27 @@ async function getRecommendations(seeds) {
     }
 }
 
+
+function getArtistWiki(name, callback) {
+    axios.get("https://en.wikipedia.org/w/api.php?", {
+        params: {
+            format: "json",
+            action: "query",
+            prop: "extracts",
+            exintro: "",
+            explaintext: "",
+            redirects: 1,
+            titles: name,
+        }
+    }).then(function (res) {
+        var result = res.data.query.pages;
+        callback(result[Object.keys(result)[0]].extract)
+    }).catch(function(error) {
+        console.log(error);
+    })
+}
+
+
 //searchArtists("queen")
 //searchTracks("shotgun knees")
 songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
@@ -127,4 +148,3 @@ artists = '5xhFyuXigbt6RAJR7k2aDs';
 genres = "";
 seed = {songs:songs, artists:artists, genres:genres};
 getRecommendations(seed)
-
