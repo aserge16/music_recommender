@@ -4,6 +4,7 @@ import Header from './Header.js';
 import SearchBox from './SearchBox.js'
 import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
+import InputList from './InputList.js';
 
 class App extends Component {
 	constructor(props) {
@@ -52,36 +53,29 @@ class App extends Component {
 
 	render() {
 		return (
-			<div class="container-fluid"> 
+			<div>
 				<Header/>
-				
 				{/* search box */}
 				<SearchBox/>
-				
-				{/* song */}
-				{/* TODO: make a new component SongView. */}
-				<div class="row song-component">
-					<div class="card--content">a</div>
-					<div class="card--content">b</div>
-					<div class="card--content">c</div>
-					<div class="card--content">d</div>
-					<div class="card--content">e</div>
-					<div class="card--content">f</div>
-					<div class="card--content">g</div>
-					<div class="card--content">h</div>
-					<div class="card--content">i</div>
-					<div class="card--content">j</div>
+				<div class="row"> 
+					<div className="col">
+						{/* song */}
+						{/* TODO: make a new component SongView. */}
+						<SongList/>
+						
+						{/* artist */}
+						{/* TODO: make a new component ArtistView. */}
+						<div class="row artist-component">Artists</div>
+
+						{/* genre */}
+						{/* TODO: make a new component GenreView. */}
+						<div class="row genre-component">Genre</div>
+
+						<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
+					</div>
+					
+					<InputList/>
 				</div>
-				
-				{/* artist */}
-				{/* TODO: make a new component ArtistView. */}
-				<div class="row artist-component">Artists</div>
-
-				{/* genre */}
-				{/* TODO: make a new component GenreView. */}
-				<div class="row genre-component">Genre</div>
-
-				<TrackPreview trackID="75wpmGsb1ZYOmKjFHOOCAm" />
 			</div>
 		);
 	}
