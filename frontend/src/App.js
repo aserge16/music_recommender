@@ -5,6 +5,7 @@ import SearchBox from './SearchBox.js'
 import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
+import Artist from './Artist';
 
 class App extends Component {
 	constructor(props) {
@@ -101,8 +102,8 @@ class App extends Component {
 						
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
-						<div class="row new-row artist-component">Artists</div>
-
+						{/* <div class="row new-row artist-component">Artists</div> */}
+						<Artist/>
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
 						<div class="row new-row genre-component">Genre</div>

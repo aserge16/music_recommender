@@ -139,3 +139,27 @@ body{
     padding: 15px;
     border: 1px solid red;
   }
+
+.artist-box{
+  height: 240px;
+  width: 240px;
+  display: inline-block;
+  float: none;
+
+}
+
+.artist-box > img {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artist-box > p {
+  bottom: 0;
+  text-align:center
+}
