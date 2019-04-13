@@ -5,7 +5,7 @@ class AutoSuggestionBox extends Component{
     constructor(props) {
 		super(props);
 		this.state = {
-			searchResults: null,
+			searchResults: [],
 			timeoutID: 0
 		};
 	}
@@ -23,7 +23,7 @@ class AutoSuggestionBox extends Component{
 		if (this.props.query !== "" && this.props.query !== prevProps.query) {
 			clearTimeout(this.state.timeoutID);
 
-			// wait 0.5s after last query update before showing suggestion.
+			// wait 0.3s after last query update before showing suggestion.
 			this.setState({
 				timeoutID: setTimeout(() => {
 						if (this.props.type === "song") {
@@ -31,7 +31,7 @@ class AutoSuggestionBox extends Component{
 						} else if (this.props.type === "artist") {
 							searchArtists(this.props.query, this.props.token, this.updateSearchResults);
 						}
-					}, 500)
+					}, 300)
 			})
 		}
 	}
@@ -39,7 +39,8 @@ class AutoSuggestionBox extends Component{
     render() {
 		return (
 			<div>
-				<ul class="list-group">
+				{/* <ul class="list-group">
+					
 				<li class="list-group-item">
 					<img src='https://img.kpopmap.com/2018/10/izone-blood-type-sakura-cover.jpg'/>
 				<p> Airplane - Minayawa Sakura </p>
@@ -49,6 +50,18 @@ class AutoSuggestionBox extends Component{
 				<li class="list-group-item">Morbi leo risus</li>
 				<li class="list-group-item">Porta ac consectetur ac</li>
 				<li class="list-group-item">Vestibulum at eros</li>
+				</ul> */}
+				<ul class="list-group">
+					{
+						this.state.searchResults.map((item) => {
+							return (
+								<li class="list-group-item">
+									<img src={item.image_url}/>
+									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
+								</li>
+							)
+						})
+					}
 				</ul>
 			</div>
 		);

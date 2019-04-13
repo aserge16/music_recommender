@@ -39,7 +39,7 @@ export async function searchTracks(searchItem, token, callback) {
         params: {
             q: searchItem,
             type: "track",
-            limit: 15
+            limit: 7
         }
     }).then(function (res) {
         var tracks = [];
