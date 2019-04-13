@@ -163,3 +163,15 @@ body{
   bottom: 0;
   text-align:center
 }
+
+.list-group-item > img{
+  left: 0;
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.list-group-item > p{
+  float: left;
+}
