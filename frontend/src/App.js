@@ -117,7 +117,7 @@ class App extends Component {
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
 						{/* <div class="row new-row artist-component">Artists</div> */}
-						<Artist/>
+						<Artist artists={this.state.inputs.artists}/>
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
 						<div class="row new-row genre-component">Genre</div>
