@@ -12,7 +12,7 @@ import { InputGroup,
 import './style.css';
 import AutoSuggestionBox from './AutoSuggestionBox';
 
-import { searchTracks, getAccessToken } from './API_query_functions';
+import { searchTracks } from './API_query_functions';
 
 class SearchBox extends Component{
 	constructor(props) {
@@ -71,7 +71,6 @@ class SearchBox extends Component{
     }
 
 	render() {
-		getAccessToken()
 		return (
 			<div className="search-col">
 				<InputGroup className="search-box">
