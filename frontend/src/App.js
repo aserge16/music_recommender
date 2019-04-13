@@ -7,7 +7,7 @@ import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
 import { searchArtists } from './API_query_functions';
-var axios = require("axios");
+import axios from 'axios';
 
 
 class App extends Component {
@@ -81,9 +81,10 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.state)
+		// TODO: Add a setInterval here so access token doesn't expire.
 		axios.get("http://localhost:3001/access-token")
 			.then((res) => {
+				console.log(res.data)
 				this.setState({
 					token: res.data
 				})
@@ -104,12 +105,17 @@ class App extends Component {
 	}
 
 	render() {
+		console.log(this.state.token);
 		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
 				<Header/>
 				{/* search box */}
-				<SearchBox/>
+				<SearchBox 
+					token={this.state.token}
+					addInput={this.addInput}
+				/>
+
 				<div class="row new-row align-items justify-content"> 
 					<div className="col-9">
 						{/* song */}

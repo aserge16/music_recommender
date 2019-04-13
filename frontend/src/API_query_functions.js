@@ -31,35 +31,31 @@ export async function searchArtists(searchItem, token, callback) {
 
 
 export async function searchTracks(searchItem, token, callback) {
-    try {
-        axios.get('https://api.spotify.com/v1/search', {
-            headers: {
-                Authorization: "Bearer " + token
-            },
-            params: {
-                q: searchItem,
-                type: "track",
-                limit: 15
+    console.log(searchItem, token)
+    axios.get('https://api.spotify.com/v1/search', {
+        headers: {
+            Authorization: "Bearer " + token
+        },
+        params: {
+            q: searchItem,
+            type: "track",
+            limit: 15
+        }
+    }).then(function (res) {
+        var tracks = [];
+        for (var i = 0; i < res.data.tracks.items.length; i++) {
+            var item = res.data.tracks.items[i];
+            var artists = [];
+            for (var j = 0; j < item.artists.length; j++) {
+                artists[j] = item.artists[j].name;
             }
-        }).then(function (res) {
-            var tracks = [];
-            for (var i = 0; i < res.data.tracks.items.length; i++) {
-                var item = res.data.tracks.items[i];
-                var artists = [];
-                for (var j = 0; j < item.artists.length; j++) {
-                    artists[j] = item.artists[j].name;
-                }
-                var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
-                tracks[i] = track;
-            }
-            callback(tracks);
-        }).catch(function (error) {
-            console.log(error);
-        })
-    } catch (error) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-    }
+            var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
+            tracks[i] = track;
+        }
+        callback(tracks);
+    }).catch(function (error) {
+        console.log(error);
+    })
 }
 
 

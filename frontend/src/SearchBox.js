@@ -61,7 +61,6 @@ class SearchBox extends Component{
 		this.setState({
 			query: event.target.value
 		});
-		// this.updateSearchResults();
 	}
 
 	updateSearchResults = () => {
@@ -91,7 +90,11 @@ class SearchBox extends Component{
 					Get
 				</Button>
 
-				<AutoSuggestionBox query={this.state.query} />
+				<AutoSuggestionBox
+					query={this.state.query}
+					type={"song"}
+					token={this.props.token}
+				/>
 			</div>
 
 			// <div class='row'>

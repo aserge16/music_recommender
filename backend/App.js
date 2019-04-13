@@ -43,7 +43,7 @@ const getAccessToken = async () => {
                     "Content-Type": "application/x-www-form-urlencoded",
                 }
             });
-            token = response.data.token;
+            token = response.data.access_token;
         return token;
     } catch (error) {
         console.error(error);
@@ -51,4 +51,4 @@ const getAccessToken = async () => {
 }
 
 
-app.listen(port,  () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
