@@ -6,6 +6,7 @@ import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
+import { searchArtists } from './API_query_functions';
 var axios = require("axios");
 
 
@@ -103,6 +104,7 @@ class App extends Component {
 	}
 
 	render() {
+		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
 				<Header/>

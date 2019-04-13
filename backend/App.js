@@ -43,8 +43,8 @@ const getAccessToken = async () => {
                     "Content-Type": "application/x-www-form-urlencoded",
                 }
             });
-        ACCESS_TOKEN = response.data.access_token;
-        return ACCESS_TOKEN;
+            token = response.data.token;
+        return token;
     } catch (error) {
         console.error(error);
     }

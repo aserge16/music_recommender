@@ -1,34 +1,11 @@
 var axios = require("axios");
-var CLIENT_ID = "7cc2582a05fa493f8ae45727393829fe";
-var SECRET_TOKEN = "ee5dab7ff4ac48a288d22017b558e9ae";
-
-var encoded_token = Buffer.from(CLIENT_ID + ":" + SECRET_TOKEN)
-    .toString('base64');    // encode to base64
 
 
-const getAccessToken = async () => {
-    try {
-        response = await axios.post("https://accounts.spotify.com/api/token",
-            "grant_type=client_credentials", {
-                headers: {
-                    Authorization: "Basic " + encoded_token,
-                    "Content-Type": "application/x-www-form-urlencoded",
-                }
-            });
-        ACCESS_TOKEN = response.data.access_token;
-        return ACCESS_TOKEN;
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-
-async function searchArtists(searchItem) {
-    const ACCESS_TOKEN = await getAccessToken();
+export async function searchArtists(searchItem, token, callback) {
     try {
         axios.get('https://api.spotify.com/v1/search', {
             headers: {
-                Authorization: "Bearer " + ACCESS_TOKEN
+                Authorization: "Bearer " + token
             },
             params: {
                 q: searchItem,
@@ -42,7 +19,7 @@ async function searchArtists(searchItem) {
                 var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
                 artists[i] = artist;
             }
-            return artists;
+            callback(artists);
         }).catch(function (error) {
             console.log(error);
         })
@@ -53,12 +30,11 @@ async function searchArtists(searchItem) {
 }
 
 
-async function searchTracks(searchItem) {
-    const ACCESS_TOKEN = await getAccessToken();
+export async function searchTracks(searchItem, token, callback) {
     try {
         axios.get('https://api.spotify.com/v1/search', {
             headers: {
-                Authorization: "Bearer " + ACCESS_TOKEN
+                Authorization: "Bearer " + token
             },
             params: {
                 q: searchItem,
@@ -76,7 +52,7 @@ async function searchTracks(searchItem) {
                 var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
                 tracks[i] = track;
             }
-            return tracks;
+            callback(tracks);
         }).catch(function (error) {
             console.log(error);
         })
@@ -87,12 +63,11 @@ async function searchTracks(searchItem) {
 }
 
 
-async function getRecommendations(seed) {
-    const ACCESS_TOKEN = await getAccessToken();
+export async function getRecommendations(seed, token, callback) {
     try {
         axios.get('https://api.spotify.com/v1/recommendations', {
             headers: {
-                Authorization: "Bearer " + ACCESS_TOKEN
+                Authorization: "Bearer " + token
             },
             params: {
                 seed_tracks: seed.songs,
@@ -111,7 +86,7 @@ async function getRecommendations(seed) {
                 var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
                 tracks[i] = track;
             }
-            return tracks;
+            callback(tracks);
         }).catch(function (error) {
             console.log(error);
         })
@@ -121,7 +96,7 @@ async function getRecommendations(seed) {
 }
 
 
-function getArtistWiki(name, callback) {
+export function getArtistWiki(name, callback) {
     axios.get("https://en.wikipedia.org/w/api.php?", {
         params: {
             format: "json",
@@ -143,8 +118,8 @@ function getArtistWiki(name, callback) {
 
 //searchArtists("queen")
 //searchTracks("shotgun knees")
-songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
-artists = '5xhFyuXigbt6RAJR7k2aDs';
-genres = "";
-seed = {songs:songs, artists:artists, genres:genres};
-getRecommendations(seed)
+var songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
+var artists = '5xhFyuXigbt6RAJR7k2aDs';
+var genres = "";
+var seed = {songs:songs, artists:artists, genres:genres};
+//getRecommendations(seed)
