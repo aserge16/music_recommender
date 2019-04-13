@@ -63,11 +63,10 @@
   }
 
 .check-col{
-  width: 100%;
+  /* width: 100%; */
   background-color: aquamarine;
-  margin-left: 1%;
   border-radius: 10px;
-  margin:10px;
+  margin-top:10px;
 }
 
 /* Song layout */
@@ -95,6 +94,7 @@
   height: 200px;
   margin: 5px;
   display: inline-block;
+  float: none;
 }
 
 .artist-component{
@@ -110,7 +110,7 @@ body{
 	background-color: #000000;
 }
 
-.row{
+.new-row{
   border-radius: 10px;
   margin:10px;
   height: auto;
@@ -123,12 +123,43 @@ body{
   /* margin: 10px; */
 }
 
-.testimonial-group > .row {
-	overflow-x: auto;
-	white-space: nowrap;
+.live_scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  align-items: center;
+}
+.live_scroll .new-row{
+  display: block;
+}
+
+.live_scroll card--content {
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    border: 1px solid red;
   }
-  
-  .testimonial-group > .row > .card--content {
-	display: inline-block;
-	float: none;
-  }
+
+.artist-box{
+  height: 240px;
+  width: 240px;
+  display: inline-block;
+  float: none;
+
+}
+
+.artist-box > img {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artist-box > p {
+  bottom: 0;
+  text-align:center
+}

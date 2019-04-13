@@ -74,7 +74,7 @@ class SearchBox extends Component{
 		getAccessToken()
 		return (
 			<div className="search-col">
-				<InputGroup>
+				<InputGroup className="search-box">
 					<Input onChange={this.updateQuery} />
 					<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
 						<DropdownToggle caret>

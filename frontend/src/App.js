@@ -5,12 +5,17 @@ import SearchBox from './SearchBox.js'
 import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
+import Artist from './Artist';
+import { searchArtists } from './API_query_functions';
+var axios = require("axios");
+
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			token: '',
 			inputs: {
 				songs: [
 					{
@@ -75,6 +80,16 @@ class App extends Component {
 		};
 	}
 
+	componentDidMount() {
+		console.log(this.state)
+		axios.get("http://localhost:3001/access-token")
+			.then((res) => {
+				this.setState({
+					token: res.data
+				})
+			})
+	}
+
 	// the "type" parameter specifies the type of input to be added.
 	// "songs" for adding a new song and "artists" for adding a new artist
 	addInput = (type, input) => {
@@ -89,26 +104,30 @@ class App extends Component {
 	}
 
 	render() {
+		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
 				<Header/>
 				{/* search box */}
 				<SearchBox/>
-				<div class="row"> 
-					<div className="col">
+				<div class="row new-row align-items justify-content"> 
+					<div className="col-9">
 						{/* song */}
 						<SongList songs={this.state.inputs.songs}/>
-						
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
-						<div class="row artist-component">Artists</div>
-
+						{/* <div class="row new-row artist-component">Artists</div> */}
+						<Artist/>
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
-						<div class="row genre-component">Genre</div>
+						<div class="row new-row genre-component">Genre</div>
 					</div>
-					
-					<InputList/>
+					{/* <div className="col"></div> */}
+					<InputList 
+						songs={this.state.inputs.songs} 
+						artists={this.state.inputs.artists}
+						genres={this.state.inputs.genres}
+					/>
 				</div>
 			</div>
 		);
