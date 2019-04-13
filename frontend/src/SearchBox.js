@@ -10,6 +10,9 @@ import { InputGroup,
 	DropdownMenu,
 	DropdownItem } from 'reactstrap';
 import './style.css';
+import AutoSuggestionBox from './AutoSuggestionBox';
+
+import { searchTracks, getAccessToken } from './API_query_functions';
 
 class SearchBox extends Component{
 	constructor(props) {
@@ -23,6 +26,7 @@ class SearchBox extends Component{
 
 		this.state = {
 		  query: "",
+		  searchResults: [],
 		  dropdownOpen: false,
 		  splitButtonOpen: false,
 		  currentType: 'Song',
@@ -57,10 +61,17 @@ class SearchBox extends Component{
 		this.setState({
 			query: event.target.value
 		});
+		// this.updateSearchResults();
 	}
 
+	updateSearchResults = () => {
+        searchTracks(this.state.query, (results) => {
+            console.log(results)
+        })
+    }
+
 	render() {
-		console.log(this.state.query);
+		getAccessToken()
 		return (
 			<div className="search-col">
 				<InputGroup>
@@ -80,6 +91,8 @@ class SearchBox extends Component{
 				<Button style={{marginLeft: 10,}} >
 					Get
 				</Button>
+
+				<AutoSuggestionBox query={this.state.query} />
 			</div>
 
 			// <div class='row'>

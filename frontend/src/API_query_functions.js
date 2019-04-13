@@ -6,16 +6,19 @@ var encoded_token = Buffer.from(CLIENT_ID + ":" + SECRET_TOKEN)
     .toString('base64');    // encode to base64
 
 
-const getAccessToken = async () => {
+export const getAccessToken = async () => {
     try {
-        response = await axios.post("https://accounts.spotify.com/api/token",
+        var response = await axios.post("https://accounts.spotify.com/api/token",
             "grant_type=client_credentials", {
                 headers: {
+                    'Access-Control-Allow-Origin': "*",
+                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
                     Authorization: "Basic " + encoded_token,
                     "Content-Type": "application/x-www-form-urlencoded",
                 }
             });
-        ACCESS_TOKEN = response.data.access_token;
+        var ACCESS_TOKEN = response.data.access_token;
+        console.log(ACCESS_TOKEN);
         return ACCESS_TOKEN;
     } catch (error) {
         console.error(error);
@@ -23,7 +26,7 @@ const getAccessToken = async () => {
 }
 
 
-async function searchArtists(searchItem) {
+async function searchArtists(searchItem, callback) {
     const ACCESS_TOKEN = await getAccessToken();
     try {
         axios.get('https://api.spotify.com/v1/search', {
@@ -42,7 +45,7 @@ async function searchArtists(searchItem) {
                 var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
                 artists[i] = artist;
             }
-            return artists;
+            callback(artists);
         }).catch(function (error) {
             console.log(error);
         })
@@ -53,8 +56,10 @@ async function searchArtists(searchItem) {
 }
 
 
-async function searchTracks(searchItem) {
+export async function searchTracks(searchItem, callback) {
+    console.log(searchItem);
     const ACCESS_TOKEN = await getAccessToken();
+    console.log(ACCESS_TOKEN)
     try {
         axios.get('https://api.spotify.com/v1/search', {
             headers: {
@@ -76,7 +81,7 @@ async function searchTracks(searchItem) {
                 var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
                 tracks[i] = track;
             }
-            return tracks;
+            callback(tracks);
         }).catch(function (error) {
             console.log(error);
         })
@@ -143,8 +148,8 @@ function getArtistWiki(name, callback) {
 
 //searchArtists("queen")
 //searchTracks("shotgun knees")
-songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
-artists = '5xhFyuXigbt6RAJR7k2aDs';
-genres = "";
-seed = {songs:songs, artists:artists, genres:genres};
-getRecommendations(seed)
+// songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
+// artists = '5xhFyuXigbt6RAJR7k2aDs';
+// genres = "";
+// seed = {songs:songs, artists:artists, genres:genres};
+// getRecommendations(seed)
