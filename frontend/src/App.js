@@ -6,12 +6,15 @@ import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
+var axios = require("axios");
+
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			token: '',
 			inputs: {
 				songs: [
 					{
@@ -76,6 +79,16 @@ class App extends Component {
 		};
 	}
 
+	componentDidMount() {
+		console.log(this.state)
+		axios.get("http://localhost:3001/access-token")
+			.then((res) => {
+				this.setState({
+					token: res.data
+				})
+			})
+	}
+
 	// the "type" parameter specifies the type of input to be added.
 	// "songs" for adding a new song and "artists" for adding a new artist
 	addInput = (type, input) => {
@@ -99,7 +112,6 @@ class App extends Component {
 					<div className="col-9">
 						{/* song */}
 						<SongList songs={this.state.inputs.songs}/>
-						
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
 						{/* <div class="row new-row artist-component">Artists</div> */}

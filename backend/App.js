@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
 /*
  * Handle POST request for access token
  */
-app.post('/access-token', (req, res) => {
+app.get('/access-token', (req, res) => {
     getAccessToken().then((token) => res.send(token))
 })
 
