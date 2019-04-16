@@ -13,10 +13,8 @@
 .search-col{
   width: 100% ;
   border-radius: 10px;
-  /* background-color: lightpink; */
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .search-box{
@@ -24,6 +22,13 @@
 }
 .auto-suggest{
   width:73%;
+  z-index: 2;
+  position: absolute;
+}
+
+.not-search{
+  z-index: 1;
+  position: relative;
 }
 /* .search-box{
   position: absolute;
@@ -162,9 +167,16 @@ body{
   margin-right: auto;
 }
 
+.artist-box:hover{
+  background-color: #1db954;
+}
 .artist-box > p {
   bottom: 0;
   text-align:center
+}
+
+.list-group-item:hover{
+  background-color: #1db954;
 }
 
 .list-group-item > img{
