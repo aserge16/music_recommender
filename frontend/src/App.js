@@ -149,34 +149,15 @@ class App extends Component {
 							<Artist artists={this.state.inputs.artists}/>
 							{/* genre */}
 							{/* TODO: make a new component GenreView. */}
-							<div className="row new-row genre-component">Genre</div>
+							<Playlist playlists={this.state.inputs.playlists}/>
 						</div>
 						{/* <div className="col"></div> */}
 						<InputList 
 							songs={this.state.inputs.songs} 
 							artists={this.state.inputs.artists}
-							genres={this.state.inputs.genres}
+							playlists={this.state.inputs.playlists}
 						/>
 					</div>
-				</div>
-				<div className="row new-row align-items justify-content"> 
-					<div className="col-9">
-						{/* song */}
-						<SongList songs={this.state.inputs.songs}/>
-						{/* artist */}
-						{/* TODO: make a new component ArtistView. */}
-						{/* <div className="row new-row artist-component">Artists</div> */}
-						<Artist artists={this.state.inputs.artists}/>
-						{/* genre */}
-						{/* TODO: make a new component GenreView. */}
-						<Playlist playlists={this.state.inputs.playlists}/>
-					</div>
-					{/* <div className="col"></div> */}
-					<InputList 
-						songs={this.state.inputs.songs} 
-						artists={this.state.inputs.artists}
-						playlists={this.state.inputs.playlists}
-					/>
 				</div>
 			</div>
 		);
