@@ -5,18 +5,16 @@ import './style.css';
 class SongList extends Component{
 	render() {
 		return (
-			<div class="live_scroll">
-				<div class="row new-row song-component">
+			<div className="live_scroll">
+				<div className="row new-row song-component">
 					{
-						this.props.songs.map((song) => {
-							return (
-								<div class="card--content">
-									<TrackPreview
-										trackID={song.id}
-									/>
-								</div>
-							);
-						})
+						this.props.songs.map((song) =>
+							<div className="card--content" key={song.id}>
+								<TrackPreview
+									trackID={song.id}
+								/>
+							</div>
+						)
 					}
 				</div>
 			</div>
