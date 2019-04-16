@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-class ArtistView extends Component{
+class PlaylistView extends Component{
 	render() {
-        // change the width and height as needed
 		return(
 			<div>
                 <iframe 
-                    src={`https://open.spotify.com/embed/artist/${this.props.artistID}`}
-					title={this.props.name}
-					width="240"
+                    src={`https://open.spotify.com/embed/playlist/${this.props.playlistID}`}
+                    width="240"
                     height="240"
                     frameBorder="0"
                     allowtransparency="true"
@@ -19,4 +17,4 @@ class ArtistView extends Component{
 	}
 }
 
-export default ArtistView;
+export default PlaylistView;
