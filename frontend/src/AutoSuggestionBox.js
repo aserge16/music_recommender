@@ -51,11 +51,11 @@ class AutoSuggestionBox extends Component{
 				<li class="list-group-item">Porta ac consectetur ac</li>
 				<li class="list-group-item">Vestibulum at eros</li>
 				</ul> */}
-				<ul class="list-group">
+				<ul className="list-group">
 					{
 						this.state.searchResults.map((item) => {
 							return (
-								<li class="list-group-item">
+								<li className="list-group-item">
 									<img src={item.image_url}/>
 									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
 								</li>

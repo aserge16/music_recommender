@@ -6,7 +6,7 @@ import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
-import { searchArtists } from './API_query_functions';
+import { searchArtists, getCategory } from './API_query_functions';
 import axios from 'axios';
 
 
@@ -106,6 +106,7 @@ class App extends Component {
 
 	render() {
 		console.log(this.state.token);
+		//getCategory('party', this.state.token, (result) => console.log(result))
 		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
@@ -116,17 +117,17 @@ class App extends Component {
 					addInput={this.addInput}
 				/>
 
-				<div class="row new-row align-items justify-content"> 
+				<div className="row new-row align-items justify-content"> 
 					<div className="col-9">
 						{/* song */}
 						<SongList songs={this.state.inputs.songs}/>
 						{/* artist */}
 						{/* TODO: make a new component ArtistView. */}
-						{/* <div class="row new-row artist-component">Artists</div> */}
+						{/* <div className="row new-row artist-component">Artists</div> */}
 						<Artist artists={this.state.inputs.artists}/>
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
-						<div class="row new-row genre-component">Genre</div>
+						<div className="row new-row genre-component">Genre</div>
 					</div>
 					{/* <div className="col"></div> */}
 					<InputList 

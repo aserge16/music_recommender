@@ -9,7 +9,7 @@ class ArtistView extends Component{
                     src={`https://open.spotify.com/embed/artist/${this.props.artistID}`}
                     width="250"
                     height="250"
-                    frameborder="0"
+                    frameBorder="0"
                     allowtransparency="true"
                     allow="encrypted-media"
                 />

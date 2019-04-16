@@ -92,6 +92,30 @@ export async function getRecommendations(seed, token, callback) {
 }
 
 
+export async function getCategory(category, token, callback) {
+    try {
+        axios.get('https://api.spotify.com/v1/browse/categories/'+ category +'/playlists', {
+            headers: {
+                Authorization: "Bearer " + token
+            },
+            params: {
+                limit: 5
+            }
+        }).then(function (res) {
+            var playlists = [];
+            for (var i = 0; i < res.data.playlists.items.length; i++) {
+                var item = res.data.playlists.items[i];
+                var playlist = {name:item.name, id:item.id};
+                playlists[i] = playlist;
+            }
+            callback(playlists);
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export function getArtistWiki(name, callback) {
     axios.get("https://en.wikipedia.org/w/api.php?", {
         params: {
