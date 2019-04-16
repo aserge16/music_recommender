@@ -26,9 +26,9 @@ class AutoSuggestionBox extends Component{
 			// wait 0.3s after last query update before showing suggestion.
 			this.setState({
 				timeoutID: setTimeout(() => {
-						if (this.props.type === "song") {
+						if (this.props.type === "songs") {
 							searchTracks(this.props.query, this.props.token, this.updateSearchResults);
-						} else if (this.props.type === "artist") {
+						} else if (this.props.type === "artists") {
 							searchArtists(this.props.query, this.props.token, this.updateSearchResults);
 						}
 					}, 300)
@@ -39,23 +39,15 @@ class AutoSuggestionBox extends Component{
     render() {
 		return (
 			<div>
-				{/* <ul class="list-group">
-					
-				<li class="list-group-item">
-					<img src='https://img.kpopmap.com/2018/10/izone-blood-type-sakura-cover.jpg'/>
-				<p> Airplane - Minayawa Sakura </p>
-					
-				</li>
-				<li class="list-group-item">Dapibus ac facilisis in</li>
-				<li class="list-group-item">Morbi leo risus</li>
-				<li class="list-group-item">Porta ac consectetur ac</li>
-				<li class="list-group-item">Vestibulum at eros</li>
-				</ul> */}
 				<ul class="list-group">
 					{
 						this.state.searchResults.map((item) => {
 							return (
-								<li class="list-group-item">
+								<li 
+									class="list-group-item"
+									key={item.id}
+									onClick={(e) => {this.props.addInput(this.props.type, item)}}	
+								>
 									<img src={item.image_url}/>
 									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
 								</li>

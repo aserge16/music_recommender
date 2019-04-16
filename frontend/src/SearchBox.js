@@ -92,8 +92,9 @@ class SearchBox extends Component{
 
 				<AutoSuggestionBox
 					query={this.state.query}
-					type={"song"}
+					type={"songs"}
 					token={this.props.token}
+					addInput={this.props.addInput}
 				/>
 			</div>
 
