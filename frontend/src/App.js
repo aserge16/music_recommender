@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import './style.css';
 import Header from './Header.js';
 import SearchBox from './SearchBox.js'
-import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
-import { searchArtists, getCategory } from './API_query_functions';
 import axios from 'axios';
+//import { searchArtists, getCategory } from './API_query_functions';
 
 
 class App extends Component {

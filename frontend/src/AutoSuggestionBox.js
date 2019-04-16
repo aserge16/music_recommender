@@ -44,11 +44,11 @@ class AutoSuggestionBox extends Component{
 						this.state.searchResults.map((item) => {
 							return (
 								<li 
-									class="list-group-item"
+									className="list-group-item"
 									key={item.id}
 									onClick={(e) => {this.props.addInput(this.props.type, item)}}	
 								>
-									<img src={item.image_url}/>
+									<img src={item.image_url} alt=""/>
 									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
 								</li>
 							)

@@ -7,7 +7,8 @@ class ArtistView extends Component{
 			<div>
                 <iframe 
                     src={`https://open.spotify.com/embed/artist/${this.props.artistID}`}
-                    width="250"
+					title={this.props.name}
+					width="250"
                     height="250"
                     frameBorder="0"
                     allowtransparency="true"

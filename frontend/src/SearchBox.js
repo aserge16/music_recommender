@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { InputGroup,
-	InputGroupAddon,
 	InputGroupButtonDropdown,
-	InputGroupDropdown,
 	Input,
 	Button,
-	Dropdown,
 	DropdownToggle,
 	DropdownMenu,
 	DropdownItem } from 'reactstrap';
