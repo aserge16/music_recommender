@@ -6,7 +6,7 @@ import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
-import { searchArtists } from './API_query_functions';
+import { searchArtists, getCategory } from './API_query_functions';
 import axios from 'axios';
 
 
@@ -106,6 +106,7 @@ class App extends Component {
 
 	render() {
 		console.log(this.state.token);
+		//getCategory('party', this.state.token, (result) => console.log(result))
 		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
