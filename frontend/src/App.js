@@ -116,25 +116,26 @@ class App extends Component {
 					token={this.state.token}
 					addInput={this.addInput}
 				/>
-
-				<div className="row new-row align-items justify-content"> 
-					<div className="col-9">
-						{/* song */}
-						<SongList songs={this.state.inputs.songs}/>
-						{/* artist */}
-						{/* TODO: make a new component ArtistView. */}
-						{/* <div className="row new-row artist-component">Artists</div> */}
-						<Artist artists={this.state.inputs.artists}/>
-						{/* genre */}
-						{/* TODO: make a new component GenreView. */}
-						<div className="row new-row genre-component">Genre</div>
+				<div class='not-search'>
+					<div className="row new-row align-items justify-content"> 
+						<div className="col-9">
+							{/* song */}
+							<SongList songs={this.state.inputs.songs}/>
+							{/* artist */}
+							{/* TODO: make a new component ArtistView. */}
+							{/* <div className="row new-row artist-component">Artists</div> */}
+							<Artist artists={this.state.inputs.artists}/>
+							{/* genre */}
+							{/* TODO: make a new component GenreView. */}
+							<div className="row new-row genre-component">Genre</div>
+						</div>
+						{/* <div className="col"></div> */}
+						<InputList 
+							songs={this.state.inputs.songs} 
+							artists={this.state.inputs.artists}
+							genres={this.state.inputs.genres}
+						/>
 					</div>
-					{/* <div className="col"></div> */}
-					<InputList 
-						songs={this.state.inputs.songs} 
-						artists={this.state.inputs.artists}
-						genres={this.state.inputs.genres}
-					/>
 				</div>
 			</div>
 		);
