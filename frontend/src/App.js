@@ -116,6 +116,13 @@ class App extends Component {
 		this.setState(newState);
 	}
 
+	removeInput = (type, inputID) => {
+		var newState = this.state;
+		var inputIndex = newState.inputs[type].map((item) => item.id).indexOf(inputID)
+		newState.inputs[type].splice(inputIndex, 1);
+		this.setState(newState);
+	}
+
 	// Call Spotify to get recommendations
 	getRecommendations = () => {
 
@@ -148,6 +155,7 @@ class App extends Component {
 							songs={this.state.inputs.songs} 
 							artists={this.state.inputs.artists}
 							genres={this.state.inputs.genres}
+							removeInput={this.removeInput}
 						/>
 					</div>
 				</div>

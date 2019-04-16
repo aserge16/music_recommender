@@ -12,6 +12,8 @@ class InputList extends Component{
 						<InputListElem
 							elem={song}
 							key={song.id}
+							type="songs"
+							removeInput={this.props.removeInput}
 						/>
 					)
 				}
