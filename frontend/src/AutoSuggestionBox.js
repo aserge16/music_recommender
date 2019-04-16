@@ -20,7 +20,9 @@ class AutoSuggestionBox extends Component{
 	}
 	
 	componentDidUpdate(prevProps) {
-		if (this.props.query !== "" && this.props.query !== prevProps.query) {
+		// start searching for auto-suggestion when user types in a search query
+		// if (this.props.query !== "" && this.props.query !== prevProps.query) {
+		if (this.props.query !== prevProps.query) {
 			clearTimeout(this.state.timeoutID);
 
 			// wait 0.3s after last query update before showing suggestion.
@@ -39,7 +41,7 @@ class AutoSuggestionBox extends Component{
     render() {
 		return (
 			<div>
-				<ul class="list-group">
+				<ul class="list-group" hidden={this.props.query === ""}>
 					{
 						this.state.searchResults.map((item) => {
 							return (

@@ -9,7 +9,11 @@ class InputList extends Component{
 				<h3>Songs</h3>
 				{
 					this.props.songs.map((song) =>
-					<InputListElem elem={song} key={song.id}></InputListElem>)
+						<InputListElem
+							elem={song}
+							key={song.id}
+						/>
+					)
 				}
 			</div>
 		);
