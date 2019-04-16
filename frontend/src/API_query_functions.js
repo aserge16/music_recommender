@@ -31,7 +31,6 @@ export async function searchArtists(searchItem, token, callback) {
 
 
 export async function searchTracks(searchItem, token, callback) {
-    console.log(searchItem, token)
     axios.get('https://api.spotify.com/v1/search', {
         headers: {
             Authorization: "Bearer " + token

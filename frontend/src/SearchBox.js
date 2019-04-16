@@ -71,30 +71,37 @@ class SearchBox extends Component{
 
 	render() {
 		return (
-			<div className="search-col">
-				<InputGroup className="search-box">
-					<Input onChange={this.updateQuery} />
-					<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
-						<DropdownToggle caret>
-						{this.state.currentType}
-						</DropdownToggle>
-						<DropdownMenu>
-						<DropdownItem onClick={this.typeToSong}>Song</DropdownItem>
-						<DropdownItem onClick={this.typeToArtist}>Artist</DropdownItem>
-						<DropdownItem onClick={this.typeToGenre}>Genre</DropdownItem>
-						</DropdownMenu>
-					</InputGroupButtonDropdown>
-				</InputGroup>
+			<div>
+				<div className="search-col">
+					<InputGroup className="search-box">
+						<Input onChange={this.updateQuery} />
+						<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
+							<DropdownToggle caret>
+							{this.state.currentType}
+							</DropdownToggle>
+							<DropdownMenu>
+							<DropdownItem onClick={this.typeToSong}>Song</DropdownItem>
+							<DropdownItem onClick={this.typeToArtist}>Artist</DropdownItem>
+							<DropdownItem onClick={this.typeToGenre}>Genre</DropdownItem>
+							</DropdownMenu>
+						</InputGroupButtonDropdown>
+					</InputGroup>
 
-				<Button style={{marginLeft: 10,}} >
-					Get
-				</Button>
+					<Button style={{marginLeft: 10,}} >
+						Get
+					</Button>
 
-				<AutoSuggestionBox
-					query={this.state.query}
-					type={"song"}
-					token={this.props.token}
-				/>
+				</div>
+				<div className='search-col'>
+					<div className="auto-suggest">
+						<AutoSuggestionBox
+							query={this.state.query}
+							type={"songs"}
+							token={this.props.token}
+							addInput={this.props.addInput}
+						/>
+					</div>
+				</div>
 			</div>
 
 			// <div class='row'>

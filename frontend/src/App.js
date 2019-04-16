@@ -114,6 +114,14 @@ class App extends Component {
 		var newState = this.state;
 		newState.inputs[type].push(input);
 		this.setState(newState);
+
+		// this.setState({
+		// 	...this.state,
+		// 	inputs: {
+		// 		...this.state.inputs,
+		// 		songs: this.state[type].concat([input])
+		// 	}
+		// })
 	}
 
 	// Call Spotify to get recommendations
@@ -122,9 +130,6 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.state.token);
-		getCategory('party', this.state.token, (result) => console.log(result));
-		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
 				<Header/>
