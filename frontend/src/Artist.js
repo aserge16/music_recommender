@@ -13,8 +13,9 @@ class Artist extends Component{
 								<div className='artist-box' key={artist.id}>
 									<ArtistView
 										artistID={artist.id}
+										name={artist.name}
 									/>
-									<img src={artist.image_url}/>
+									<img src={artist.image_url} alt=''/>
 									<p> {artist.name} </p>
 								</div>
 							//);

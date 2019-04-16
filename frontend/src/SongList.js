@@ -12,6 +12,7 @@ class SongList extends Component{
 							<div className="card--content" key={song.id}>
 								<TrackPreview
 									trackID={song.id}
+									name={song.name}
 								/>
 							</div>
 						)

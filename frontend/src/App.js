@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import './style.css';
 import Header from './Header.js';
 import SearchBox from './SearchBox.js'
-import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
-import Playlist from './Playlist.js';
-import { searchArtists, getCategory } from './API_query_functions';
 import axios from 'axios';
+//import { searchArtists, getCategory } from './API_query_functions';
 
 
 class App extends Component {
@@ -148,7 +146,7 @@ class App extends Component {
 							<Artist artists={this.state.inputs.artists}/>
 							{/* genre */}
 							{/* TODO: make a new component GenreView. */}
-							<div className="row new-row genre-component">Genre</div>
+							<Playlist playlists={this.state.inputs.playlists}/>
 						</div>
 						{/* <div className="col"></div> */}
 						<InputList 
@@ -156,27 +154,9 @@ class App extends Component {
 							artists={this.state.inputs.artists}
 							genres={this.state.inputs.genres}
 							removeInput={this.removeInput}
+							playlists={this.state.inputs.playlists}
 						/>
 					</div>
-				</div>
-				<div className="row new-row align-items justify-content"> 
-					<div className="col-9">
-						{/* song */}
-						<SongList songs={this.state.inputs.songs}/>
-						{/* artist */}
-						{/* TODO: make a new component ArtistView. */}
-						{/* <div className="row new-row artist-component">Artists</div> */}
-						<Artist artists={this.state.inputs.artists}/>
-						{/* genre */}
-						{/* TODO: make a new component GenreView. */}
-						<Playlist playlists={this.state.inputs.playlists}/>
-					</div>
-					{/* <div className="col"></div> */}
-					<InputList 
-						songs={this.state.inputs.songs} 
-						artists={this.state.inputs.artists}
-						playlists={this.state.inputs.playlists}
-					/>
 				</div>
 			</div>
 		);

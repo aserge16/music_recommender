@@ -7,7 +7,8 @@ class TrackPreview extends Component{
 			<div>
                 <iframe 
                     src={`https://open.spotify.com/embed/track/${this.props.trackID}`}
-                    width="240"
+					title={this.props.name}
+					width="240"
                     height="240"
                     frameBorder="0"
                     allowtransparency="true"

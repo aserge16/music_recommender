@@ -60,7 +60,7 @@ class AutoSuggestionBox extends Component{
                                         this.setState({ hidden: true} )
                                     }}
 								>
-									<img src={item.image_url}/>
+									<img src={item.image_url} alt=""/>
 									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
 								</li>
 							)
