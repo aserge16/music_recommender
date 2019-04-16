@@ -6,6 +6,7 @@ import TrackPreview from './TrackPreview';
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
+import Playlist from './Playlist.js';
 import { searchArtists, getCategory } from './API_query_functions';
 import axios from 'axios';
 
@@ -72,7 +73,23 @@ class App extends Component {
 						id: '5m7wCUhYhBh7A3A3YMxrbt',
 						image_url: 'https://i.scdn.co/image/8f0b1267ee4a84e260991c25d136ed4be13a8cbe' }
 				],
-				genres: []
+				playlists: [
+					{
+						name: "New Year's Party Mix",
+						id: "37i9dQZF1DX1TEroFz7Oja" },
+					{
+						name: "Dance Party",
+						id: "37i9dQZF1DXaXB8fQg7xif" },
+					{
+						name: "Rock Party",
+						id: "37i9dQZF1DX8FwnYE6PRvL" },
+					{
+						name: "Girls' Night",
+						id: "37i9dQZF1DX0Uv9tZ47pWo" },
+					{
+						name: "Latin Party Anthems",
+						id: "37i9dQZF1DWVcbzTgVpNRm" }
+				]
 			},
 			recommendations: {
 				
@@ -106,7 +123,7 @@ class App extends Component {
 
 	render() {
 		console.log(this.state.token);
-		//getCategory('party', this.state.token, (result) => console.log(result))
+		getCategory('party', this.state.token, (result) => console.log(result));
 		//searchArtists("john", this.state.token, (result) => console.log(result));
 		return (
 			<div>
@@ -127,13 +144,13 @@ class App extends Component {
 						<Artist artists={this.state.inputs.artists}/>
 						{/* genre */}
 						{/* TODO: make a new component GenreView. */}
-						<div className="row new-row genre-component">Genre</div>
+						<Playlist playlists={this.state.inputs.playlists}/>
 					</div>
 					{/* <div className="col"></div> */}
 					<InputList 
 						songs={this.state.inputs.songs} 
 						artists={this.state.inputs.artists}
-						genres={this.state.inputs.genres}
+						playlists={this.state.inputs.playlists}
 					/>
 				</div>
 			</div>
