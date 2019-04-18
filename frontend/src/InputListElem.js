@@ -10,7 +10,12 @@ class InputListElem extends Component{
 					{this.props.elem.name}
 				</div>
 				
-				<Button className="col-2" size="sm" color="danger">x</Button>
+				<Button 
+					className="col-2"
+					onClick={() => this.props.removeInput(this.props.type, this.props.id)}
+				>
+					x
+				</Button>
 			</div>
 		);
 	}

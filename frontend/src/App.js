@@ -115,14 +115,13 @@ class App extends Component {
 		var newState = this.state;
 		newState.inputs[type].push(input);
 		this.setState(newState);
+	}
 
-		// this.setState({
-		// 	...this.state,
-		// 	inputs: {
-		// 		...this.state.inputs,
-		// 		songs: this.state[type].concat([input])
-		// 	}
-		// })
+	removeInput = (type, inputID) => {
+		var newState = this.state;
+		var inputIndex = newState.inputs[type].map((item) => item.id).indexOf(inputID)
+		newState.inputs[type].splice(inputIndex, 1);
+		this.setState(newState);
 	}
 
 	render() {
@@ -152,6 +151,8 @@ class App extends Component {
 						<InputList 
 							songs={this.state.inputs.songs} 
 							artists={this.state.inputs.artists}
+							genres={this.state.inputs.genres}
+							removeInput={this.removeInput}
 							playlists={this.state.inputs.playlists}
 						/>
 					</div>
