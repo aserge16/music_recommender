@@ -6,6 +6,7 @@ import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
 import axios from 'axios';
+import Playlist from './Playlist.js'
 //import { searchArtists, getCategory } from './API_query_functions';
 
 
