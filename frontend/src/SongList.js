@@ -7,6 +7,7 @@ class SongList extends Component{
 		return (
 			<div className="live_scroll">
 				<div className="row new-row song-component">
+				<h2>Songs</h2>
 					{
 						this.props.songs.map((song) =>
 							<div className="card--content" key={song.id}>

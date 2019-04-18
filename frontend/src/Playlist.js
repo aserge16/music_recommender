@@ -6,6 +6,7 @@ class Playlist extends Component{
 		return (
 			<div className="live_scroll">
 				<div className="row new-row genre-component">
+				<h2> Playlist </h2>
 					{
 						this.props.playlists.map((playlist) => 
 								<div className='genre-box' key={playlist.id}>

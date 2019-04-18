@@ -79,7 +79,7 @@
 
 /* Song layout */
 .song-component{
-	height: 250px !important; 
+	height: 300px !important; 
   background-color: aqua;
   display: flex;
   flex-direction: row;
@@ -106,15 +106,18 @@
 }
 
 .artist-component{
-	height: 400px; 
+	height: 300px !important; 
 	background-color: lightcoral;
 }
 .genre-component{
-	height: 400px; 
+	height: 300px !important; 
 	background-color: rgb(240, 236, 204);
 }
 
 
+h2{
+  font-family: Arial, Helvetica, sans-serif;
+}
 body{
 	background-color: #000000;
 }
@@ -125,6 +128,11 @@ body{
   height: auto;
   min-height: 200px;
   flex: 1;
+}
+
+.song-component .card--content{
+  bottom: 0px;
+  position: relative;
 }
 
 .column{
