@@ -5,8 +5,9 @@ import SearchBox from './SearchBox.js'
 import SongList from './SongList.js';
 import InputList from './InputList.js';
 import Artist from './Artist';
+import Playlist from './Playlist.js';
 import axios from 'axios';
-//import { searchArtists, getCategory } from './API_query_functions';
+import { getRecommendations } from './API_query_functions';
 
 
 class App extends Component {
@@ -89,9 +90,12 @@ class App extends Component {
 						id: "37i9dQZF1DWVcbzTgVpNRm" }
 				]
 			},
-			recommendations: {
+			recommendations: [
+
+			],
+			genres: [
 				
-			}
+			]
 		};
 	}
 
@@ -99,7 +103,6 @@ class App extends Component {
 		// TODO: Add a setInterval here so access token doesn't expire.
 		axios.get("http://localhost:3001/access-token")
 			.then((res) => {
-				console.log(res.data)
 				this.setState({
 					token: res.data
 				})
@@ -122,12 +125,8 @@ class App extends Component {
 		// })
 	}
 
-	// Call Spotify to get recommendations
-	getRecommendations = () => {
-
-	}
-
 	render() {
+		//getRecommendations(this.state.inputs, this.state.token, (result) => console.log(result));
 		return (
 			<div>
 				<Header/>
