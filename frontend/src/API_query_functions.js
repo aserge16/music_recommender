@@ -2,31 +2,31 @@ var axios = require("axios");
 
 
 export async function searchArtists(searchItem, token, callback) {
-    try {
-        axios.get('https://api.spotify.com/v1/search', {
-            headers: {
-                Authorization: "Bearer " + token
-            },
-            params: {
-                q: searchItem,
-                type: "artist",
-                limit: 15
-            }
-        }).then(function (res) {
-            var artists = [];
-            for (var i = 0; i < res.data.artists.items.length; i++) {
-                var item = res.data.artists.items[i];
+    console.log(searchItem)
+    axios.get('https://api.spotify.com/v1/search', {
+        headers: {
+            Authorization: "Bearer " + token
+        },
+        params: {
+            q: searchItem,
+            type: "artist",
+            limit: 15
+        }
+    }).then(function (res) {
+        var artists = [];
+        for (var i = 0; i < res.data.artists.items.length; i++) {
+            var item = res.data.artists.items[i];
+            if (item.images.length != 0) {
                 var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
-                artists[i] = artist;
+            } else {
+                var artist = {name:item.name, id:item.id, image_url:""}
             }
-            callback(artists);
-        }).catch(function (error) {
-            console.log(error);
-        })
-    } catch (error) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-    }
+            artists[i] = artist;
+        }
+        callback(artists);
+    }).catch(function (error) {
+        console.log(error);
+    })
 }
 
 
@@ -59,15 +59,43 @@ export async function searchTracks(searchItem, token, callback) {
 
 
 export async function getRecommendations(seed, token, callback) {
+    var tracks = '';
+    console.log(seed)
+    if (seed.songs !== undefined) {
+        for (var i = 0; i < seed.songs.length; i++) {
+            var id = seed.songs[i].id;
+            tracks += id + ','
+        }
+        tracks = tracks.slice(0, -1);
+    }
+
+    var artists = '';
+    if (seed.artists !== undefined) {
+        for (i = 0; i < seed.artists.length - 3; i++) {
+            id = seed.artists[i].id;
+            artists += id + ','
+        }
+        artists = artists.slice(0, -1);
+    }
+
+    var genres = '';
+    if (seed.genres !== undefined) {
+        for (i = 0; i < seed.genres.length; i++) {
+            id = seed.genres[i].id;
+            genres += id + ','
+        }
+        genres = genres.slice(0, -1);
+    }
+
     try {
         axios.get('https://api.spotify.com/v1/recommendations', {
             headers: {
                 Authorization: "Bearer " + token
             },
             params: {
-                seed_tracks: seed.songs,
-                seed_artists: seed.artists,
-                seed_genres: seed.genres,
+                seed_tracks: tracks,
+                seed_artists: artists,
+                seed_genres: '',
                 limit: 15
             }
         }).then(function (res) {
@@ -82,8 +110,6 @@ export async function getRecommendations(seed, token, callback) {
                 tracks[i] = track;
             }
             callback(tracks);
-        }).catch(function (error) {
-            console.log(error);
         })
     } catch (error) {
         console.log(error);
@@ -133,12 +159,3 @@ export function getArtistWiki(name, callback) {
         console.log(error);
     })
 }
-
-
-//searchArtists("queen")
-//searchTracks("shotgun knees")
-var songs = '5xhFyuXigbt6RAJR7k2aDs,1TKYPzH66GwsqyJFKFkBHQ';
-var artists = '5xhFyuXigbt6RAJR7k2aDs';
-var genres = "";
-var seed = {songs:songs, artists:artists, genres:genres};
-//getRecommendations(seed)
