@@ -17,61 +17,8 @@ class App extends Component {
 		this.state = {
 			token: '',
 			inputs: {
-				songs: [
-					{
-						name: 'Where Is My Mama At',
-						id: '5zFQCsOcFOhPAHgig4W3bn',
-						artists: [ 'Elliphant' ],
-						image_url: 'https://i.scdn.co/image/debbeb4efebd8194d86ed350e66fb951e8556147' },
-					{
-						name: 'Television',
-						id: '3Qd2hv3zY6EIx9J94d7thb',
-						artists: [ 'Natalia Kills' ],
-						image_url: 'https://i.scdn.co/image/f5f5033173863e65d59c2a8d0bac2facfe37a3f0' },
-					{
-						name: 'God from the Machine',
-						id: '1jugG2ptzEPcLUxSbCiY4A',
-						artists: [ 'Santigold' ],
-						image_url: 'https://i.scdn.co/image/33dfdb9ff14477706fdbc694deb52d0f011c84be' },
-					{
-						name: 'Soda',
-						id: '5lbtm3klSJvcf4lgFhmNcC',
-						artists: [ 'Azealia Banks' ],
-						image_url: 'https://i.scdn.co/image/1f1fa79ebec2ba56c8a397e837573312517094f9' },
-					{
-						name: 'Loyal Royal',
-						id: '6wAFDaYq7Htm56SaYOOAie',
-						artists: [ 'Sabina Ddumba' ],
-						image_url: 'https://i.scdn.co/image/5bece7fdded937e41e245cef0366d5fb473e5357' },
-					{
-						name: 'Immature Couture',
-						id: '4IWKVBCOTuAPsUfHt7wtDd',
-						artists: [ 'Poppy' ],
-						image_url: 'https://i.scdn.co/image/120d03965bee92a6a70c2e3d52059b5dd1d24742' }
-				],
-				artists: [
-					{
-						name: 'Queen',
-  						id: '1dfeR4HaWDbWqFHLkxsg1d',
-						image_url: 'https://i.scdn.co/image/b040846ceba13c3e9c125d68389491094e7f2982' },
-					{
-						name: 'Beyoncé',
-						id: '6vWDO969PvNqNYHIOW5v0m',
-						image_url: 'https://i.scdn.co/image/673cd94546df0536954198867516fee18cee1605' },
-					{
-						name: 'Queen Naija',
-						id: '3nViOFa3kZW8OMSNOzwr98',
-						image_url:
-						 'https://i.scdn.co/image/6402cfd535b9f7ac3a9e9f0b311039ef44d055ca' },
-					{
-						name: 'Queen Pen',
-						id: '0VbIlorLz3I5SEtIsc5vAr',
-						image_url: 'https://i.scdn.co/image/ff4eabfc6691a25a8b43782e80a0ba0781f09a68' },
-					{
-						name: 'Queen Latifah',
-						id: '5m7wCUhYhBh7A3A3YMxrbt',
-						image_url: 'https://i.scdn.co/image/8f0b1267ee4a84e260991c25d136ed4be13a8cbe' }
-				],
+				songs: [],
+				artists: [],
 				playlists: [
 					{
 						name: "New Year's Party Mix",
@@ -89,13 +36,9 @@ class App extends Component {
 						name: "Latin Party Anthems",
 						id: "37i9dQZF1DWVcbzTgVpNRm" }
 				],
-				recommendedSongs: [
-
-				],
-				genres: [
-					
-				]
+				genres: []
 			},
+			recommendations: {songs: []}
 		};
 	}
 
@@ -124,6 +67,18 @@ class App extends Component {
 		this.setState(newState);
 	}
 
+	emptyRecommendations = () => {
+		var newState = this.state;
+		newState.recommendations.songs = [];
+		this.setState(newState);
+	}
+
+	addRecommendation = (type, input) => {
+		var newState = this.state;
+		newState.recommendations[type].push(input);
+		this.setState(newState);
+	}
+
 	render() {
 		return (
 			<div>
@@ -132,13 +87,15 @@ class App extends Component {
 				<SearchBox 
 					token={this.state.token}
 					addInput={this.addInput}
+					emptyRecommendations = {this.emptyRecommendations}
+					addRecommendation = {this.addRecommendation}
 					inputs={this.state.inputs}
 				/>
 				<div className='not-search'>
 					<div className="row new-row align-items justify-content"> 
 						<div className="col-9">
 							{/* song */}
-							<SongList recommendedSongs={this.state.inputs.recommendedSongs}/>
+							<SongList recommendedSongs={this.state.recommendations.songs}/>
 							{/* artist */}
 							{/* TODO: make a new component ArtistView. */}
 							{/* <div className="row new-row artist-component">Artists</div> */}
@@ -149,7 +106,7 @@ class App extends Component {
 						</div>
 						{/* <div className="col"></div> */}
 						<InputList 
-							songs={this.state.inputs.recommendedSongs}
+							songs={this.state.inputs.songs}
 							artists={this.state.inputs.artists}
 							genres={this.state.inputs.genres}
 							removeInput={this.removeInput}

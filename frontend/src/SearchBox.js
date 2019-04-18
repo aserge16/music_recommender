@@ -85,8 +85,9 @@ class SearchBox extends Component{
 					</InputGroup>
 
 					<Button style={{marginLeft: 10,}} onClick={() => getRecommendations(this.props.inputs, this.props.token, (result) => {
+						this.props.emptyRecommendations();
 						for (var i = 0; i < result.length; i++) {
-							this.props.addInput('recommendedSongs', result[i])
+							this.props.addRecommendation('songs', result[i])
 						}
 					})} >
 						Get

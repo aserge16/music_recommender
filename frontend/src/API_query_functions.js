@@ -62,7 +62,7 @@ export async function getRecommendations(seed, token, callback) {
     var tracks = '';
     console.log(seed)
     if (seed.songs !== undefined) {
-        for (var i = 0; i < seed.songs.length - 3; i++) {
+        for (var i = 0; i < seed.songs.length; i++) {
             var id = seed.songs[i].id;
             tracks += id + ','
         }
@@ -70,7 +70,7 @@ export async function getRecommendations(seed, token, callback) {
     }
 
     var artists = '';
-    if (seed.artists !== undefined) {
+    if (seed.artists == undefined) {
         for (i = 0; i < seed.artists.length - 3; i++) {
             id = seed.artists[i].id;
             artists += id + ','
