@@ -6,21 +6,15 @@ class AutoSuggestionBox extends Component{
 		super(props);
 		this.state = {
 			searchResults: [],
-			timeoutID: 0
+			timeoutID: 0,
+			hidden: true
 		};
-	}
-
-	updateSearchResults = (searchResults) => {
-		clearTimeout(this.state.timeoutID);
-
-		console.log(searchResults);
-		this.setState({
-			searchResults
-		});
 	}
 	
 	componentDidUpdate(prevProps) {
-		if (this.props.query !== "" && this.props.query !== prevProps.query) {
+		// start searching for auto-suggestion when user types in a search query
+		// if (this.props.query !== "" && this.props.query !== prevProps.query) {
+		if (this.props.query !== prevProps.query) {
 			clearTimeout(this.state.timeoutID);
 
 			// wait 0.3s after last query update before showing suggestion.
@@ -31,22 +25,40 @@ class AutoSuggestionBox extends Component{
 						} else if (this.props.type === "artists") {
 							searchArtists(this.props.query, this.props.token, this.updateSearchResults);
 						}
-					}, 300)
+                    }, 300),
+                hidden: false
 			})
 		}
+    }
+
+    setHiddenTrue = () => {
+        this.setState({ hidden: true} )
+    }
+    
+    updateSearchResults = (searchResults) => {
+		clearTimeout(this.state.timeoutID);
+
+		console.log(searchResults);
+		this.setState({
+			searchResults
+		});
 	}
 
     render() {
+        console.log(this.state.hidden);
 		return (
 			<div>
-				<ul class="list-group">
+				<ul class="list-group" hidden={this.props.query === "" || this.state.hidden}>
 					{
 						this.state.searchResults.map((item) => {
 							return (
 								<li 
-									className="list-group-item"
-									key={item.id}
-									onClick={(e) => {this.props.addInput(this.props.type, item)}}	
+									class="list-group-item"
+                                    key={item.id}
+                                    onClick={(e) => {
+                                        this.props.addInput(this.props.type, item)
+                                        this.setState({ hidden: true} )
+                                    }}
 								>
 									<img src={item.image_url} alt=""/>
 									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
