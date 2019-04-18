@@ -8,8 +8,8 @@ import { InputGroup,
 	DropdownItem } from 'reactstrap';
 import './style.css';
 import AutoSuggestionBox from './AutoSuggestionBox';
+import { searchTracks, getRecommendations } from './API_query_functions';
 
-import { searchTracks } from './API_query_functions';
 
 class SearchBox extends Component{
 	constructor(props) {
@@ -64,7 +64,7 @@ class SearchBox extends Component{
         searchTracks(this.state.query, (results) => {
             console.log(results)
         })
-    }
+	}
 
 	render() {
 		return (
@@ -84,7 +84,11 @@ class SearchBox extends Component{
 						</InputGroupButtonDropdown>
 					</InputGroup>
 
-					<Button style={{marginLeft: 10,}} >
+					<Button style={{marginLeft: 10,}} onClick={() => getRecommendations(this.props.inputs, this.props.token, (result) => {
+						for (var i = 0; i < result.length; i++) {
+							this.props.addInput('recommendedSongs', result[i])
+						}
+					})} >
 						Get
 					</Button>
 

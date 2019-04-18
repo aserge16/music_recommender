@@ -88,14 +88,14 @@ class App extends Component {
 					{
 						name: "Latin Party Anthems",
 						id: "37i9dQZF1DWVcbzTgVpNRm" }
+				],
+				recommendedSongs: [
+
+				],
+				genres: [
+					
 				]
 			},
-			recommendations: [
-
-			],
-			genres: [
-				
-			]
 		};
 	}
 
@@ -125,7 +125,6 @@ class App extends Component {
 	}
 
 	render() {
-		//getRecommendations(this.state.inputs, this.state.token, (result) => console.log(result));
 		return (
 			<div>
 				<Header/>
@@ -133,12 +132,13 @@ class App extends Component {
 				<SearchBox 
 					token={this.state.token}
 					addInput={this.addInput}
+					inputs={this.state.inputs}
 				/>
 				<div className='not-search'>
 					<div className="row new-row align-items justify-content"> 
 						<div className="col-9">
 							{/* song */}
-							<SongList songs={this.state.inputs.songs}/>
+							<SongList recommendedSongs={this.state.inputs.recommendedSongs}/>
 							{/* artist */}
 							{/* TODO: make a new component ArtistView. */}
 							{/* <div className="row new-row artist-component">Artists</div> */}
@@ -149,7 +149,7 @@ class App extends Component {
 						</div>
 						{/* <div className="col"></div> */}
 						<InputList 
-							songs={this.state.inputs.songs} 
+							songs={this.state.inputs.recommendedSongs}
 							artists={this.state.inputs.artists}
 							genres={this.state.inputs.genres}
 							removeInput={this.removeInput}
