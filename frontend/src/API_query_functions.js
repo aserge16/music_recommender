@@ -70,7 +70,7 @@ export async function getRecommendations(seed, token, callback) {
     }
 
     var artists = '';
-    if (seed.artists == undefined) {
+    if (seed.artists !== undefined) {
         for (i = 0; i < seed.artists.length - 3; i++) {
             id = seed.artists[i].id;
             artists += id + ','
