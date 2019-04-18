@@ -12,6 +12,12 @@ class AutoSuggestionBox extends Component{
 	}
 	
 	componentDidUpdate(prevProps) {
+		if (prevProps.type != this.props.type) {
+			this.setState({
+				searchResults: []
+			});
+		}
+		
 		// start searching for auto-suggestion when user types in a search query
 		// if (this.props.query !== "" && this.props.query !== prevProps.query) {
 		if (this.props.query !== prevProps.query) {
@@ -21,6 +27,7 @@ class AutoSuggestionBox extends Component{
 			this.setState({
 				timeoutID: setTimeout(() => {
 						if (this.props.type === "songs") {
+							console.log(this.props.type)
 							searchTracks(this.props.query, this.props.token, this.updateSearchResults);
 						} else if (this.props.type === "artists") {
 							searchArtists(this.props.query, this.props.token, this.updateSearchResults);
@@ -45,7 +52,7 @@ class AutoSuggestionBox extends Component{
 	}
 
     render() {
-        console.log(this.state.hidden);
+		console.log(this.state.hidden);
 		return (
 			<div>
 				<ul class="list-group" hidden={this.props.query === "" || this.state.hidden}>
@@ -57,11 +64,17 @@ class AutoSuggestionBox extends Component{
                                     key={item.id}
                                     onClick={(e) => {
                                         this.props.addInput(this.props.type, item)
-                                        this.setState({ hidden: true} )
+										this.setState({ hidden: true} )
+										this.setState({ searchResults: [] })
                                     }}
 								>
 									<img src={item.image_url} alt=""/>
-									<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
+									{ (this.props.type == "songs") ? (
+										<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
+									) : (this.props.type == "artists") ? (
+										<p>{item.name} </p>
+									) : (<p></p>)
+									}
 								</li>
 							)
 						})

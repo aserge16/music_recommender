@@ -26,7 +26,7 @@ class SearchBox extends Component{
 		  searchResults: [],
 		  dropdownOpen: false,
 		  splitButtonOpen: false,
-		  currentType: 'Song',
+		  currentType: 'songs',
 		};
 	}
 	
@@ -38,19 +38,19 @@ class SearchBox extends Component{
 
 	typeToSong = () => {
 		this.setState({
-			currentType: 'Song'
+			currentType: 'songs'
 		})
 	}
 
 	typeToArtist = () => {
 		this.setState({
-			currentType: 'Artist'
+			currentType: 'artists'
 		})
 	}
 
 	typeToGenre = () => {
 		this.setState({
-			currentType: 'Genre'
+			currentType: 'genres'
 		})
 	}
 
@@ -98,7 +98,7 @@ class SearchBox extends Component{
 					<div className="auto-suggest">
 						<AutoSuggestionBox
 							query={this.state.query}
-							type={"songs"}
+							type={this.state.currentType}
 							token={this.props.token}
 							addInput={this.props.addInput}
 						/>

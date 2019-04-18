@@ -2,31 +2,31 @@ var axios = require("axios");
 
 
 export async function searchArtists(searchItem, token, callback) {
-    try {
-        axios.get('https://api.spotify.com/v1/search', {
-            headers: {
-                Authorization: "Bearer " + token
-            },
-            params: {
-                q: searchItem,
-                type: "artist",
-                limit: 15
-            }
-        }).then(function (res) {
-            var artists = [];
-            for (var i = 0; i < res.data.artists.items.length; i++) {
-                var item = res.data.artists.items[i];
+    console.log(searchItem)
+    axios.get('https://api.spotify.com/v1/search', {
+        headers: {
+            Authorization: "Bearer " + token
+        },
+        params: {
+            q: searchItem,
+            type: "artist",
+            limit: 15
+        }
+    }).then(function (res) {
+        var artists = [];
+        for (var i = 0; i < res.data.artists.items.length; i++) {
+            var item = res.data.artists.items[i];
+            if (item.images.length != 0) {
                 var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
-                artists[i] = artist;
+            } else {
+                var artist = {name:item.name, id:item.id, image_url:""}
             }
-            callback(artists);
-        }).catch(function (error) {
-            console.log(error);
-        })
-    } catch (error) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-    }
+            artists[i] = artist;
+        }
+        callback(artists);
+    }).catch(function (error) {
+        console.log(error);
+    })
 }
 
 
