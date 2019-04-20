@@ -5,7 +5,7 @@ class Playlist extends Component{
 	render() {
 		return (
 			<div className="live_scroll">
-				<div className="row new-row genre-component">
+				<div className="row new-row song-component">
 				<h2> Playlist </h2>
 					{
 						this.props.playlists.map((playlist) => 
