@@ -52,7 +52,6 @@ class AutoSuggestionBox extends Component{
 	}
 
     render() {
-		console.log(this.state.hidden);
 		return (
 			<div>
 				<ul class="list-group" hidden={this.props.query === "" || this.state.hidden}>
