@@ -14,6 +14,7 @@ class InputListElem extends Component{
 					className="col-2"
 					onClick={() => this.props.removeInput(this.props.type, this.props.id)}
 				>
+					{/* TODO: use some library to get a cross icon, don't just use "x" */}
 					x
 				</Button>
 			</div>

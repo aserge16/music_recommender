@@ -18,7 +18,7 @@ class App extends Component {
 			token: '',
 			inputs: {
 				songs: [],
-				artists: [],
+				artists: [],	
 				playlists: [
 					{
 						name: "New Year's Party Mix",
@@ -91,20 +91,20 @@ class App extends Component {
 					addRecommendation = {this.addRecommendation}
 					inputs={this.state.inputs}
 				/>
+
 				<div className='not-search'>
 					<div className="row new-row align-items justify-content"> 
 						<div className="col-9">
 							{/* song */}
 							<SongList recommendedSongs={this.state.recommendations.songs}/>
+
 							{/* artist */}
-							{/* TODO: make a new component ArtistView. */}
-							{/* <div className="row new-row artist-component">Artists</div> */}
 							<Artist artists={this.state.inputs.artists}/>
+							
 							{/* genre */}
-							{/* TODO: make a new component GenreView. */}
 							<Playlist playlists={this.state.inputs.playlists}/>
 						</div>
-						{/* <div className="col"></div> */}
+						
 						<InputList 
 							songs={this.state.inputs.songs}
 							artists={this.state.inputs.artists}
