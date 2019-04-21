@@ -6,7 +6,7 @@ class InputList extends Component{
 	render() {
 		return(
 			<div className="col-3 check-col">
-				<h3>Songs</h3>
+				<h3>Your Preferences List</h3>
 				{
 					this.props.songs.map((song) =>
 						<InputListElem

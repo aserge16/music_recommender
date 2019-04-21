@@ -1,15 +1,22 @@
 
 .header{
-  background-color: #000000;
+  background: linear-gradient(140deg, #1b1d35, #171d58);
   text-align: center;
   color: #2df02d;
   top: 0;
   left: 0;
   border-radius: 10px;
   font-family: 'Montserrat';
-  font-size: 20px;
+  height: 100px;
 }
 
+.header h1 {
+  font-size: 60px;
+}
+
+.body {
+  background: linear-gradient(140deg, #1b1d35, #171d58);
+}
 .search-col{
   width: 100% ;
   border-radius: 10px;
@@ -72,7 +79,7 @@
 
 .check-col{
   /* width: 100%; */
-  background-color: aquamarine;
+  background-color: #90EE90;
   border-radius: 10px;
   margin-top:10px;
 }
@@ -80,7 +87,7 @@
 /* Song layout */
 .song-component{
 	height: 300px !important; 
-  background-color: aqua;
+  background-color: #E7E1A6;
   display: flex;
   flex-direction: row;
   /* flex-wrap: nowrap; */
@@ -96,6 +103,23 @@
   display: none;
 }
 
+.artist-component{
+	height: 300px !important; 
+  background-color:#77acd4;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: nowrap; */
+  white-space: nowrap;
+  /* justify-content: center;*/
+  align-items: center; 
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.artist-component::-webkit-scrollbar {
+  display: none;
+}
 .card--content {
   background-color: #e74c3c;
   min-width: 200px;
@@ -105,13 +129,13 @@
   float: none;
 }
 
-.artist-component{
+/* .artist-component{
 	height: 300px !important; 
 	background-color: lightcoral;
-}
+} */
 .genre-component{
 	height: 300px !important; 
-	background-color: rgb(240, 236, 204);
+	background-color:	#FFB6C1;
 }
 
 
