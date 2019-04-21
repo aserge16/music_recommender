@@ -29,7 +29,6 @@ export async function searchArtists(searchItem, token, callback) {
     })
 }
 
-
 export async function searchTracks(searchItem, token, callback) {
     axios.get('https://api.spotify.com/v1/search', {
         headers: {
@@ -114,6 +113,36 @@ export async function getRecommendations(seed, token, callback) {
     } catch (error) {
         console.log(error);
     }
+}
+
+export async function getRelatedArtists(artists, token, callback) {
+    // Given a list of artists id, find all their related artists and combine them
+    // into a single list. Then sort the list by the artist's popularity
+    // and return the first 15 results.
+    var allRequests = artists.map((id) => {
+        return axios.get(`https://api.spotify.com/v1/artists/${id}/related-artists`,
+            {
+                headers: {
+                Authorization: "Bearer " + token
+                }
+            }
+    )});
+
+    axios.all(allRequests).then(function (res) {
+        // combine results, merge into a single list
+        var allRelatedArtists = res.map(result => result.data.artists)
+        allRelatedArtists = allRelatedArtists.flat(1)
+
+        // sort the list based on popularity, take first 15 results
+        allRelatedArtists.sort((a, b) => b.popularity - a.popularity)
+        var toReturn = allRelatedArtists.slice(0, 15)
+        callback(toReturn)
+
+        // TODO: format toReturn
+        
+    }).catch(function (error) {
+        console.log(error);
+    })
 }
 
 

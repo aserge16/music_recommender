@@ -7,7 +7,7 @@ import InputList from './InputList.js';
 import Artist from './Artist';
 import Playlist from './Playlist.js';
 import axios from 'axios';
-import { getRecommendations } from './API_query_functions';
+import { getRecommendations, getRelatedArtists } from './API_query_functions';
 
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
 			token: '',
 			inputs: {
 				songs: [],
-				artists: [],
+				artists: [],	
 				playlists: [
 					{
 						name: "New Year's Party Mix",
@@ -80,6 +80,8 @@ class App extends Component {
 	}
 
 	render() {
+		var ids = this.state.inputs.artists.map((artist) => artist.id);
+		getRelatedArtists(ids, this.state.token, (res) => console.log(res))
 		return (
 			<div className="body">
 				<Header/>
@@ -91,20 +93,21 @@ class App extends Component {
 					addRecommendation = {this.addRecommendation}
 					inputs={this.state.inputs}
 				/>
+
 				<div className='not-search'>
 					<div className="row new-row align-items justify-content"> 
 						<div className="col-9">
-							{/* song */}
+							{/* TODO: Change the color of this text */}
+							{/* <h2>Recommended Songs</h2> */}
 							<SongList recommendedSongs={this.state.recommendations.songs}/>
-							{/* artist */}
-							{/* TODO: make a new component ArtistView. */}
-							{/* <div className="row new-row artist-component">Artists</div> */}
+
+							{/* <h2>Recommended Artists</h2> */}
 							<Artist artists={this.state.inputs.artists}/>
+							
 							{/* genre */}
-							{/* TODO: make a new component GenreView. */}
 							<Playlist playlists={this.state.inputs.playlists}/>
 						</div>
-						{/* <div className="col"></div> */}
+						
 						<InputList 
 							songs={this.state.inputs.songs}
 							artists={this.state.inputs.artists}
