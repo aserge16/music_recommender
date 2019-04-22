@@ -7,7 +7,9 @@ class InputListElem extends Component{
 		return(
 			<div className="row">
 				<div className="col-10">
-					{this.props.elem.name}
+					{ this.props.elem.artists ? (
+						<p>{this.props.elem.name + "  -  " + this.props.elem.artists}</p>
+						) : <p>{this.props.elem.name}</p>}
 				</div>
 				
 				<Button 
