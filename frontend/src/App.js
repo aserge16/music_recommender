@@ -7,7 +7,6 @@ import InputList from './InputList.js';
 import Artist from './Artist';
 import Playlist from './Playlist.js';
 import axios from 'axios';
-import { getRecommendations, getRelatedArtists } from './API_query_functions';
 
 
 class App extends Component {
@@ -80,8 +79,6 @@ class App extends Component {
 	}
 
 	render() {
-		var ids = this.state.inputs.artists.map((artist) => artist.id);
-		getRelatedArtists(ids, this.state.token, (res) => console.log(res))
 		return (
 			<div className="body">
 				<Header/>

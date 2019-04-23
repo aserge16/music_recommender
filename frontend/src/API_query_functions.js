@@ -17,10 +17,10 @@ export async function searchArtists(searchItem, token, callback) {
         var artists = [];
         for (var i = 0; i < res.data.artists.items.length; i++) {
             var item = res.data.artists.items[i];
-            if (item.images.length != 0) {
+            if (item.images.length !== 0) {
                 var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
             } else {
-                var artist = {name:item.name, id:item.id, image_url:""}
+                artist = {name:item.name, id:item.id, image_url:""}
             }
             artists[i] = artist;
         }
@@ -59,7 +59,7 @@ export async function searchTracks(searchItem, token, callback) {
 
 export async function searchGenres(searchItem, callback) {
     searchItem = searchItem.toLowerCase();
-    var results = genres.genres.filter((genre) => genre.search(searchItem) != -1)
+    var results = genres.genres.filter((genre) => genre.search(searchItem) !== -1)
     callback(results)
 }
 
@@ -84,11 +84,11 @@ export async function getRecommendations(seed, token, callback) {
         artists = artists.slice(0, -1);
     }
 
-    var genres = '';
     if (seed.genres !== undefined) {
+        var genres = '';
         for (i = 0; i < seed.genres.length; i++) {
             id = seed.genres[i].id;
-            genres += id + ','
+            genres += id + ', '
         }
         genres = genres.slice(0, -1);
     }
