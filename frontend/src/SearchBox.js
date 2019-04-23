@@ -11,7 +11,7 @@ import {
 import './style.css';
 
 import AutoSuggestionBox from './AutoSuggestionBox';
-import { searchTracks, getRecommendations } from './API_query_functions';
+import { searchTracks, getRecommendations, getRelatedArtists} from './API_query_functions';
 
 
 class SearchBox extends Component{
@@ -69,6 +69,23 @@ class SearchBox extends Component{
         })
 	}
 
+	allRecomendations = (inputs, token) => {
+		this.props.emptyRecommendations();
+
+		getRecommendations(inputs, token, (result) => {
+			for (var i = 0; i < result.length; i++) {
+				this.props.addRecommendation('songs', result[i])
+			}
+		});
+
+		var ids = inputs.artists.map((artist) => artist.id);
+		getRelatedArtists(ids, token, (result) => {
+			for (var i = 0; i < result.length; i++) {
+				this.props.addRecommendation('artists', result[i])
+			}
+		});
+	}
+
 	render() {
 		return (
 			<div>
@@ -87,12 +104,7 @@ class SearchBox extends Component{
 						</InputGroupButtonDropdown>
 					</InputGroup>
 
-					<Button style={{marginLeft: 10,}} onClick={() => getRecommendations(this.props.inputs, this.props.token, (result) => {
-						this.props.emptyRecommendations();
-						for (var i = 0; i < result.length; i++) {
-							this.props.addRecommendation('songs', result[i])
-						}
-					})} >
+					<Button style={{marginLeft: 10,}} onClick={() => this.allRecomendations(this.props.inputs, this.props.token)}>
 						Get
 					</Button>
 
