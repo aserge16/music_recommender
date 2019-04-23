@@ -1,4 +1,5 @@
 var axios = require("axios");
+var genres = require("./genre_seeds");
 
 
 export async function searchArtists(searchItem, token, callback) {
@@ -54,6 +55,12 @@ export async function searchTracks(searchItem, token, callback) {
     }).catch(function (error) {
         console.log(error);
     })
+}
+
+export async function searchGenres(searchItem, callback) {
+    searchItem = searchItem.toLowerCase();
+    var results = genres.genres.filter((genre) => genre.search(searchItem) != -1)
+    callback(results)
 }
 
 
