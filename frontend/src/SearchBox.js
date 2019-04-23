@@ -11,7 +11,7 @@ import {
 import './style.css';
 
 import AutoSuggestionBox from './AutoSuggestionBox';
-import { searchTracks, getRecommendations, getRelatedArtists} from './API_query_functions';
+import { searchTracks, getRecommendations, getRelatedArtists, getCategory } from './API_query_functions';
 
 
 class SearchBox extends Component{
@@ -84,6 +84,15 @@ class SearchBox extends Component{
 				this.props.addRecommendation('artists', result[i])
 			}
 		});
+
+
+		getCategory(inputs.genres, token, (result) => {
+			for (var i = 0; i < result.length; i++) {
+				var item = result[i]
+				var playlist = {name:item.name, id:item.id}
+				this.props.addRecommendation('playlists', playlist)
+			}
+		})
 	}
 
 	render() {

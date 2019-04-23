@@ -39,7 +39,9 @@ class App extends Component {
 			},
 			recommendations: {
 				songs: [],
-				artists: []}
+				artists: [],
+				playlists: []
+			}
 		};
 	}
 
@@ -72,6 +74,7 @@ class App extends Component {
 		var newState = this.state;
 		newState.recommendations.songs = [];
 		newState.recommendations.artists = [];
+		newState.recommendations.playlists = [];
 		this.setState(newState);
 	}
 
@@ -105,7 +108,7 @@ class App extends Component {
 							<Artist artists={this.state.recommendations.artists}/>
 							
 							{/* genre */}
-							<Playlist playlists={this.state.inputs.playlists}/>
+							<Playlist playlists={this.state.recommendations.playlists}/>
 						</div>
 						
 						<InputList 
