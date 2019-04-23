@@ -74,7 +74,7 @@ export async function getRecommendations(seed, token, callback) {
     }
 
     var artists = '';
-    if (seed.artists !== "undefined") {
+    if (seed.artists !== undefined) {
         for (i = 0; i < seed.artists.length; i++) {
             id = seed.artists[i].id;
             artists += id + ','
@@ -85,7 +85,7 @@ export async function getRecommendations(seed, token, callback) {
     var genres = '';
     if (seed.genres !== undefined) {
         for (i = 0; i < seed.genres.length; i++) {
-            id = seed.genres[i].id;
+            id = seed.genres[i];
             genres += id + ','
         }
         genres = genres.slice(0, -1);
@@ -99,7 +99,7 @@ export async function getRecommendations(seed, token, callback) {
             params: {
                 seed_tracks: tracks,
                 seed_artists: artists,
-                seed_genres: '',
+                seed_genres: genres,
                 limit: 15
             }
         }).then(function (res) {
@@ -142,8 +142,6 @@ export async function getRelatedArtists(artists, token, callback) {
         allRelatedArtists.sort((a, b) => b.popularity - a.popularity)
         var toReturn = allRelatedArtists.slice(0, 15)
         callback(toReturn)
-
-        // TODO: format toReturn
         
     }).catch(function (error) {
         console.log(error);
