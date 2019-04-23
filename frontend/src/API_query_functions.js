@@ -16,10 +16,10 @@ export async function searchArtists(searchItem, token, callback) {
         var artists = [];
         for (var i = 0; i < res.data.artists.items.length; i++) {
             var item = res.data.artists.items[i];
-            if (item.images.length != 0) {
+            if (item.images.length !== 0) {
                 var artist = {name:item.name, id:item.id, image_url:item.images[0].url};
             } else {
-                var artist = {name:item.name, id:item.id, image_url:""}
+                artist = {name:item.name, id:item.id, image_url:""}
             }
             artists[i] = artist;
         }
@@ -58,7 +58,7 @@ export async function searchTracks(searchItem, token, callback) {
 
 export async function searchGenres(searchItem, callback) {
     searchItem = searchItem.toLowerCase();
-    var results = genres.genres.filter((genre) => genre.search(searchItem) != -1)
+    var results = genres.genres.filter((genre) => genre.search(searchItem) !== -1)
     callback(results)
 }
 
@@ -74,7 +74,7 @@ export async function getRecommendations(seed, token, callback) {
     }
 
     var artists = '';
-    if (seed.artists !== "undefined") {
+    if (seed.artists !== undefined) {
         for (i = 0; i < seed.artists.length; i++) {
             id = seed.artists[i].id;
             artists += id + ','
@@ -82,10 +82,10 @@ export async function getRecommendations(seed, token, callback) {
         artists = artists.slice(0, -1);
     }
 
-    var genres = '';
     if (seed.genres !== undefined) {
+        var genres = '';
         for (i = 0; i < seed.genres.length; i++) {
-            id = seed.genres[i].id;
+            id = seed.genres[i];
             genres += id + ','
         }
         genres = genres.slice(0, -1);
@@ -99,7 +99,7 @@ export async function getRecommendations(seed, token, callback) {
             params: {
                 seed_tracks: tracks,
                 seed_artists: artists,
-                seed_genres: '',
+                seed_genres: genres,
                 limit: 15
             }
         }).then(function (res) {
@@ -142,8 +142,6 @@ export async function getRelatedArtists(artists, token, callback) {
         allRelatedArtists.sort((a, b) => b.popularity - a.popularity)
         var toReturn = allRelatedArtists.slice(0, 15)
         callback(toReturn)
-
-        // TODO: format toReturn
         
     }).catch(function (error) {
         console.log(error);

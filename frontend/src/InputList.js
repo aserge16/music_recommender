@@ -31,6 +31,17 @@ class InputList extends Component{
 						/>
 					)
 				}
+				<h3>Genre Inputs</h3>
+				{
+					this.props.genres.map((genre) =>
+						<InputListElem
+							elem={genre}
+							id={genre}
+							type="genres"
+							removeInput={this.props.removeInput}
+						/>
+					)
+				}
 			</div>
 		);
 	}
