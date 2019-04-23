@@ -41,6 +41,12 @@ i:hover{
   z-index: 1;
   position: relative;
 }
+
+.artist-card{
+	/* z-index: 3;
+	position: absolute !important; */
+	overflow-y: auto;
+}
 /* .search-box{
   position: absolute;
   width: 50%;
@@ -109,16 +115,17 @@ i:hover{
 
 .artist-component{
 	height: 300px !important; 
-  background-color:#77acd4;
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: nowrap; */
-  white-space: nowrap;
-  /* justify-content: center;*/
-  align-items: center; 
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+	background-color:#77acd4;
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: nowrap; */
+	white-space: nowrap;
+	/* justify-content: center;*/
+	align-items: center; 
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	/* overflow-y: hidden; */
 }
 
 .artist-component::-webkit-scrollbar {
@@ -235,11 +242,6 @@ body{
 .artist-box > p {
   bottom: 0;
   text-align:center
-}
-
-.artist-card{
-	z-index: 3;
-	position: absolute !important;
 }
 
 .list-group-item:hover{
