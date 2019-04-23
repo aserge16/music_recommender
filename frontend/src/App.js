@@ -44,13 +44,15 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		// TODO: Add a setInterval here so access token doesn't expire.
-		axios.get("http://localhost:3001/access-token")
-			.then((res) => {
-				this.setState({
-					token: res.data
-				})
-			})
+		// Repeat the call to get a new access token so access token doesn't expire.
+		setInterval(() => {
+			axios.get("http://localhost:3001/access-token")
+				.then((res) => {
+					this.setState({
+						token: res.data
+					})
+				})	
+		}, 1000 * 3600)
 	}
 
 	// the "type" parameter specifies the type of input to be added.
