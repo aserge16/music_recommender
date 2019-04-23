@@ -10,16 +10,10 @@ class Artist extends Component{
 					<h3>Recommended Artists</h3>
 					{
 						this.props.artists.map((artist) => 
-							//return (
-								<div className='artist-box' key={artist.id}>
-									<ArtistView
-										artistID={artist.id}
-										name={artist.name}
-									/>
-									<img src={artist.image_url} alt=''/>
-									<p> {artist.name} </p>
-								</div>
-							//);
+							<ArtistView
+								key = {artist.id}
+								artist = {artist}
+							/>
 						)
 					}
 				</div>
