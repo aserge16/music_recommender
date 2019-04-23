@@ -13,6 +13,7 @@ class InputList extends Component{
 						<InputListElem
 							elem={song}
 							key={song.id}
+							id={song.id}
 							type="songs"
 							removeInput={this.props.removeInput}
 						/>
@@ -20,11 +21,12 @@ class InputList extends Component{
 				}
 				<h3>Artist Inputs</h3>
 				{
-					this.props.artists.map((song) =>
+					this.props.artists.map((artist) =>
 						<InputListElem
-							elem={song}
-							key={song.id}
-							type="songs"
+							elem={artist}
+							key={artist.id}
+							id={artist.id}
+							type="artists"
 							removeInput={this.props.removeInput}
 						/>
 					)
