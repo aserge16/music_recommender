@@ -7,7 +7,6 @@ import InputList from './InputList.js';
 import Artist from './Artist';
 import Playlist from './Playlist.js';
 import axios from 'axios';
-import { getRecommendations, getRelatedArtists } from './API_query_functions';
 
 
 class App extends Component {

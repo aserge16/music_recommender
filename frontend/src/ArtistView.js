@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, CardHeader, CardFooter, CardBody,
-	CardTitle, CardText } from 'reactstrap';
+import { Card, CardHeader, CardBody } from 'reactstrap';
 
 class ArtistView extends Component{
 	constructor(props) {

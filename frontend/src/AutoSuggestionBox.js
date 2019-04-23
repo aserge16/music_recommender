@@ -12,7 +12,7 @@ class AutoSuggestionBox extends Component{
 	}
 	
 	componentDidUpdate(prevProps) {
-		if (prevProps.type != this.props.type) {
+		if (prevProps.type !== this.props.type) {
 			this.setState({
 				searchResults: []
 			});
@@ -54,7 +54,7 @@ class AutoSuggestionBox extends Component{
     render() {
 		return (
 			<div>
-				<ul class="list-group" hidden={this.props.query === "" || this.state.hidden}>
+				<ul className="list-group" hidden={this.props.query === "" || this.state.hidden}>
 					{
 						this.state.searchResults.map((item) => {
 							return (
@@ -71,9 +71,9 @@ class AutoSuggestionBox extends Component{
                                     }}
 								>
 									{this.props.type !== "genres" && <img src={item.image_url} alt=""/>}
-									{ item && ((this.props.type == "songs") ? (
+									{ item && ((this.props.type === "songs") ? (
 										<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
-									) : (this.props.type == "artists") ? (
+									) : (this.props.type === "artists") ? (
 										<p>{item.name} </p>
 									) : (<p>{item}</p>)
                                     )}
