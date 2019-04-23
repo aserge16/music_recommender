@@ -7,7 +7,7 @@ class Artist extends Component{
 		return (
 			<div className="live_scroll">
 				<div className="row new-row artist-component">
-					<h3>Recommended Artists</h3>
+					<h3>Recommended Artists</h3> 
 					{
 						this.props.artists.map((artist) => 
 							//return (
