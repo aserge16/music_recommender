@@ -27,7 +27,6 @@ class AutoSuggestionBox extends Component{
 			this.setState({
 				timeoutID: setTimeout(() => {
 						if (this.props.type === "songs") {
-							console.log(this.props.type)
 							searchTracks(this.props.query, this.props.token, this.updateSearchResults);
 						} else if (this.props.type === "artists") {
 							searchArtists(this.props.query, this.props.token, this.updateSearchResults);
@@ -47,7 +46,6 @@ class AutoSuggestionBox extends Component{
     updateSearchResults = (searchResults) => {
 		clearTimeout(this.state.timeoutID);
 
-		console.log(searchResults);
 		this.setState({
 			searchResults
 		});
@@ -62,11 +60,14 @@ class AutoSuggestionBox extends Component{
 							return (
 								<li 
 									class="list-group-item"
-                                    key={item.id}
+                                    key={item.id ? item.id : item}
                                     onClick={(e) => {
                                         this.props.addInput(this.props.type, item)
 										this.setState({ hidden: true} )
-										this.setState({ searchResults: [] })
+										this.setState({
+                                            hidden: true,
+                                            searchResults: []
+                                        })
                                     }}
 								>
 									{this.props.type !== "genres" && <img src={item.image_url} alt=""/>}

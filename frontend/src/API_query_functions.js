@@ -3,7 +3,6 @@ var genres = require("./genre_seeds");
 
 
 export async function searchArtists(searchItem, token, callback) {
-    console.log(searchItem)
     axios.get('https://api.spotify.com/v1/search', {
         headers: {
             Authorization: "Bearer " + token
@@ -66,7 +65,6 @@ export async function searchGenres(searchItem, callback) {
 
 export async function getRecommendations(seed, token, callback) {
     var tracks = '';
-    console.log(seed)
     if (seed.songs !== undefined) {
         for (var i = 0; i < seed.songs.length; i++) {
             var id = seed.songs[i].id;
@@ -76,8 +74,8 @@ export async function getRecommendations(seed, token, callback) {
     }
 
     var artists = '';
-    if (seed.artists !== undefined) {
-        for (i = 0; i < seed.artists.length - 3; i++) {
+    if (seed.artists !== "undefined") {
+        for (i = 0; i < seed.artists.length; i++) {
             id = seed.artists[i].id;
             artists += id + ','
         }
