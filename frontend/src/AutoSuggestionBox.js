@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { searchTracks, searchArtists } from './API_query_functions';
+import { searchTracks, searchArtists, searchGenres } from './API_query_functions';
 
 class AutoSuggestionBox extends Component{
     constructor(props) {
@@ -23,7 +23,7 @@ class AutoSuggestionBox extends Component{
 		if (this.props.query !== prevProps.query) {
 			clearTimeout(this.state.timeoutID);
 
-			// wait 0.3s after last query update before showing suggestion.
+			// wait 0.2s after last query update before showing suggestion.
 			this.setState({
 				timeoutID: setTimeout(() => {
 						if (this.props.type === "songs") {
@@ -31,8 +31,10 @@ class AutoSuggestionBox extends Component{
 							searchTracks(this.props.query, this.props.token, this.updateSearchResults);
 						} else if (this.props.type === "artists") {
 							searchArtists(this.props.query, this.props.token, this.updateSearchResults);
-						}
-                    }, 300),
+						} else if (this.props.type === "genres") {
+                            searchGenres(this.props.query, this.updateSearchResults);
+                        }
+                    }, 200),
                 hidden: false
 			})
 		}
@@ -67,13 +69,13 @@ class AutoSuggestionBox extends Component{
 										this.setState({ searchResults: [] })
                                     }}
 								>
-									<img src={item.image_url} alt=""/>
-									{ (this.props.type == "songs") ? (
+									{this.props.type !== "genres" && <img src={item.image_url} alt=""/>}
+									{ item && ((this.props.type == "songs") ? (
 										<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
 									) : (this.props.type == "artists") ? (
 										<p>{item.name} </p>
-									) : (<p></p>)
-									}
+									) : (<p>{item}</p>)
+                                    )}
 								</li>
 							)
 						})
