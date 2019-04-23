@@ -12,13 +12,12 @@ class InputListElem extends Component{
 						) : <p>{this.props.elem.name}</p>}
 				</div>
 				
-				<Button 
+				{/* <Button 
 					className="col-2"
 					onClick={() => this.props.removeInput(this.props.type, this.props.id)}
-				>
-					{/* TODO: use some library to get a cross icon, don't just use "x" */}
-					x
-				</Button>
+				> */}
+				<i class="fas fa-times-circle" onClick={() => this.props.removeInput(this.props.type, this.props.id)}></i>
+				{/* </Button> */}
 			</div>
 		);
 	}
