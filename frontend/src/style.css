@@ -91,16 +91,16 @@ i:hover{
 /* Song layout */
 .song-component{
 	height: 300px !important; 
-  background-color: #E7E1A6;
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: nowrap; */
-  white-space: nowrap;
-  /* justify-content: center;*/
-  align-items: center; 
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+	background-color: #E7E1A6;
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: nowrap; */
+	white-space: nowrap;
+	/* justify-content: center;*/
+	align-items: center; 
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .song-component::-webkit-scrollbar {
@@ -235,6 +235,11 @@ body{
 .artist-box > p {
   bottom: 0;
   text-align:center
+}
+
+.artist-card{
+	z-index: 3;
+	position: absolute !important;
 }
 
 .list-group-item:hover{
