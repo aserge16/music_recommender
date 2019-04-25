@@ -4,7 +4,6 @@ import {Button} from 'reactstrap';
 
 class InputListElem extends Component{
 	render() {
-		console.log(this.props)
 		return(
 			<div className="row">
 				<div className="col-10">
