@@ -17,24 +17,7 @@ class App extends Component {
 			token: '',
 			inputs: {
 				songs: [],
-				artists: [],	
-				playlists: [
-					{
-						name: "New Year's Party Mix",
-						id: "37i9dQZF1DX1TEroFz7Oja" },
-					{
-						name: "Dance Party",
-						id: "37i9dQZF1DXaXB8fQg7xif" },
-					{
-						name: "Rock Party",
-						id: "37i9dQZF1DX8FwnYE6PRvL" },
-					{
-						name: "Girls' Night",
-						id: "37i9dQZF1DX0Uv9tZ47pWo" },
-					{
-						name: "Latin Party Anthems",
-						id: "37i9dQZF1DWVcbzTgVpNRm" }
-				],
+				artists: [],
 				genres: []
 			},
 			recommendations: {
