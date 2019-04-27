@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card, CardHeader, CardBody } from 'reactstrap';
 
 class ArtistView extends Component{
 	constructor(props) {
@@ -16,12 +15,14 @@ class ArtistView extends Component{
     }
 
 	render() {
-		
-        // change the width and height as needed
 		return(
 			<div className='artist-box'>
 				<p>{this.props.artist.name} </p>
-				<img src={this.props.artist.images[0].url} alt='' onClick={this.toggle}/>
+				{
+					this.props.artist.images.length === 0
+					? <img src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'} alt='' onClick={this.toggle}/>
+					: <img src={this.props.artist.images[0].url} alt='' onClick={this.toggle}/>
+				}
 				<div classname='artist-card'>
 				<iframe 
 					hidden={this.state.hidden}
@@ -34,23 +35,7 @@ class ArtistView extends Component{
 					allow="encrypted-media"
 				/>
 				</div>
-				
-				{/* <Card classname='artist-card' hidden={this.state.hidden}>
-					<CardHeader>{this.props.artist.name}</CardHeader>
-					<CardBody>
-					<iframe 
-						hidden={this.state.hidden}
-						src={`https://open.spotify.com/embed/artist/${this.props.artist.id}`}
-						title={this.props.artist.name}
-						width="240"
-						height="240"
-						frameBorder="0"
-						allowtransparency="true"
-						allow="encrypted-media"
-					/>
-					</CardBody>
-				</Card> */}
-            </div>
+			</div>
 		)
 	}
 }

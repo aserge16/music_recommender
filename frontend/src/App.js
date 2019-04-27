@@ -29,7 +29,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		// TODO: Add a setInterval here so access token doesn't expire.
 		axios.get("http://localhost:3001/access-token")
 			.then((res) => {
 				this.setState({
@@ -38,8 +37,6 @@ class App extends Component {
 			})
 	}
 
-	// the "type" parameter specifies the type of input to be added.
-	// "songs" for adding a new song and "artists" for adding a new artist
 	addInput = (type, input) => {
 		var newState = this.state;
 		newState.inputs[type].push(input);
@@ -71,7 +68,6 @@ class App extends Component {
 		return (
 			<div className="body">
 				<Header/>
-				{/* search box */}
 				<SearchBox 
 					token={this.state.token}
 					addInput={this.addInput}
@@ -83,14 +79,8 @@ class App extends Component {
 				<div className='not-search'>
 					<div className="row new-row align-items justify-content"> 
 						<div className="col-9">
-							{/* TODO: Change the color of this text */}
-							{/* <h2>Recommended Songs</h2> */}
 							<SongList recommendedSongs={this.state.recommendations.songs}/>
-
-							{/* <h2>Recommended Artists</h2> */}
 							<Artist artists={this.state.recommendations.artists}/>
-							
-							{/* genre */}
 							<Playlist playlists={this.state.recommendations.playlists}/>
 						</div>
 						
