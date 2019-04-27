@@ -13,7 +13,6 @@ class Playlist extends Component{
 									<PlaylistView
 										playlistID={playlist.id}
 									/>
-									{/* <p> {playlist.name} </p> */}
 								</div>
 						)
 					}
