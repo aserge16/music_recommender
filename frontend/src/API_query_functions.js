@@ -66,29 +66,16 @@ export async function searchGenres(searchItem, callback) {
 export async function getRecommendations(seed, token, callback) {
     var tracks = '';
     if (seed.songs !== undefined) {
-        for (var i = 0; i < seed.songs.length; i++) {
-            var id = seed.songs[i].id;
-            tracks += id + ','
-        }
-        tracks = tracks.slice(0, -1);
+        tracks = seed.songs.map((song) => song.id).join()
     }
 
     var artists = '';
     if (seed.artists !== undefined) {
-        for (i = 0; i < seed.artists.length; i++) {
-            id = seed.artists[i].id;
-            artists += id + ','
-        }
-        artists = artists.slice(0, -1);
+        artists = seed.artists.map((artist) => artist.id).join()
     }
 
     if (seed.genres !== undefined) {
-        var genres = '';
-        for (i = 0; i < seed.genres.length; i++) {
-            id = seed.genres[i];
-            genres += id + ','
-        }
-        genres = genres.slice(0, -1);
+        genres = seed.genres.join()
     }
 
     try {
@@ -106,12 +93,15 @@ export async function getRecommendations(seed, token, callback) {
             var tracks = [];
             for (var i = 0; i < res.data.tracks.length; i++) {
                 var item = res.data.tracks[i];
-                var artists = [];
-                for (var j = 0; j < item.artists.length; j++) {
-                    artists[j] = item.artists[j].name;
-                }
-                var track = {name:item.name, id:item.id, artists:artists, image_url:item.album.images[0].url};
-                tracks[i] = track;
+                var artists = item.artists.map((artist) => artist.name)
+
+                var track = {
+                    name: item.name, 
+                    id: item.id, 
+                    artists: artists, 
+                    image_url: item.album.images[0].url
+                };
+                tracks.push(track);
             }
             callback(tracks);
         })
@@ -164,25 +154,6 @@ export async function getCategory(categories, token, callback) {
         allPlaylists = allPlaylists.flat(1)
         callback(allPlaylists)
     }).catch(function (error) {
-        console.log(error);
-    })
-}
-
-export function getArtistWiki(name, callback) {
-    axios.get("https://en.wikipedia.org/w/api.php?", {
-        params: {
-            format: "json",
-            action: "query",
-            prop: "extracts",
-            exintro: "",
-            explaintext: "",
-            redirects: 1,
-            titles: name,
-        }
-    }).then(function (res) {
-        var result = res.data.query.pages;
-        callback(result[Object.keys(result)[0]].extract)
-    }).catch(function(error) {
         console.log(error);
     })
 }
