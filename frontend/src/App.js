@@ -46,6 +46,7 @@ class App extends Component {
 		this.setState(newState);
 	}
 
+	
 	removeInput = (type, inputID) => {
 		var newState = this.state;
 		var inputIndex = newState.inputs[type].map((item) => item.id).indexOf(inputID)

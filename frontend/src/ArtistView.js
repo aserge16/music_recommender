@@ -13,7 +13,16 @@ class ArtistView extends Component{
 	toggle = () => {
 		this.setState({ hidden: !this.state.hidden} )
 		console.log(this.props.artist)
-    }
+	}
+	
+	hideDiv = () => {
+		var hideMe = document.getElementsByClassName('artist-card');
+		document.onclick = function(e){
+			if(e.target.className !== 'artist-box'){
+				hideMe.style.display = 'none';
+			}
+		}
+	}
 
 	render() {
 		
