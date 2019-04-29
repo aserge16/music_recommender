@@ -1,8 +1,7 @@
 var axios = require("axios");
-var genres = require("./genre_seeds");
+var genres = require("./src/genre_seeds");
 
-
-export async function searchArtists(searchItem, token, callback) {
+async function searchArtists(searchItem, token, callback) {
     axios.get('https://api.spotify.com/v1/search', {
         headers: {
             Authorization: "Bearer " + token
@@ -29,7 +28,7 @@ export async function searchArtists(searchItem, token, callback) {
     })
 }
 
-export async function searchTracks(searchItem, token, callback) {
+async function searchTracks(searchItem, token, callback) {
     axios.get('https://api.spotify.com/v1/search', {
         headers: {
             Authorization: "Bearer " + token
@@ -56,14 +55,14 @@ export async function searchTracks(searchItem, token, callback) {
     })
 }
 
-export async function searchGenres(searchItem, callback) {
+async function searchGenres(searchItem, callback) {
     searchItem = searchItem.toLowerCase();
     var results = genres.genres.filter((genre) => genre.search(searchItem) !== -1)
     callback(results)
 }
 
 
-export async function getRecommendations(seed, token, callback) {
+async function getRecommendations(seed, token, callback) {
     var tracks = '';
     if (seed.songs !== undefined) {
         tracks = seed.songs.map((song) => song.id).join()
@@ -110,7 +109,7 @@ export async function getRecommendations(seed, token, callback) {
     }
 }
 
-export async function getRelatedArtists(artists, token, callback) {
+async function getRelatedArtists(artists, token, callback) {
     // Given a list of artists id, find all their related artists and combine them
     // into a single list. Then sort the list by the artist's popularity
     // and return the first 15 results.
@@ -139,7 +138,7 @@ export async function getRelatedArtists(artists, token, callback) {
 }
 
 
-export async function getCategory(categories, token, callback) {
+async function getCategory(categories, token, callback) {
     var allRequests = categories.map((category) => {
         return axios.get(`https://api.spotify.com/v1/browse/categories/${category}/playlists`,
             {
@@ -157,3 +156,10 @@ export async function getCategory(categories, token, callback) {
         console.log(error);
     })
 }
+
+module.exports.searchArtists = searchArtists;
+module.exports.searchTracks = searchTracks;
+module.exports.searchGenres = searchGenres;
+module.exports.getRecommendations = getRecommendations;
+module.exports.getRelatedArtists = getRelatedArtists;
+module.exports.getCategory = getCategory;

@@ -8,14 +8,24 @@ class Artist extends Component{
 			<div className="live_scroll">
 				<div className="row new-row artist-component">
 					<h3>Recommended Artists</h3> 
-					{
-						this.props.artists.map((artist) => 
-							<ArtistView
-								key = {artist.id}
-								artist = {artist}
-							/>
-						)
-					}
+						{/* {
+							this.props.artists.map((artist) =>
+							<div classname='artist-box'> 
+								<p>{artist.name} </p>
+								<img 
+									src={artist.images[0].url} 
+								/>
+							</div>
+							)
+						} */}
+						{
+							this.props.artists.map((artist) => 
+								<ArtistView
+									key = {artist.id}
+									artist = {artist}
+								/>
+							)
+						}
 				</div>
 			</div>
 		);
