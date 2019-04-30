@@ -7,7 +7,7 @@ class SongList extends Component{
 		return (
 			<div className="live_scroll">
 				<div className="row new-row song-component">
-				<h3>Recommended Songs</h3>
+					<h3>Recommended Songs</h3>
 					{
 						this.props.recommendedSongs.map((song) =>
 							<div className="card--content" key={song.id}>

@@ -78,7 +78,7 @@ i:hover{
   
   }
   
-  .search-txt{
+.search-txt{
 	border: none;
 	background: none;
 	outline: none;
@@ -90,7 +90,7 @@ i:hover{
 	transition: 0.4s;
 	line-height: 20px;
 	border-bottom: 1px solid #1db954;
-  }
+}
 
 .check-col{
   /* width: 100%; */
@@ -222,8 +222,7 @@ body{
   width: 250px;
   display: inline-block;
   float: none;
-  margin: 5px;
-
+  margin-left: 5px;
 }
 
 .genre-box{
