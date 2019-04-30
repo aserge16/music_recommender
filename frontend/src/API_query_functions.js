@@ -58,7 +58,8 @@ export async function searchTracks(searchItem, token, callback) {
 
 export async function searchGenres(searchItem, callback) {
     searchItem = searchItem.toLowerCase();
-    var results = genres.genres.filter((genre) => genre.search(searchItem) !== -1)
+    var allGenres = Object.keys(genres.genres)
+    var results = allGenres.filter((genre) => genre.toLowerCase().search(searchItem) !== -1)
     callback(results)
 }
 
@@ -139,7 +140,7 @@ export async function getRelatedArtists(artists, token, callback) {
 }
 
 
-export async function getCategory(categories, token, callback) {
+export async function getPlaylists(categories, token, callback) {
     var allRequests = categories.map((category) => {
         return axios.get(`https://api.spotify.com/v1/browse/categories/${category}/playlists`,
             {
@@ -151,9 +152,25 @@ export async function getCategory(categories, token, callback) {
 
     axios.all(allRequests).then(function (res) {
         var allPlaylists = res.map(result => result.data.playlists.items)
+
         allPlaylists = allPlaylists.flat(1)
         callback(allPlaylists)
     }).catch(function (error) {
         console.log(error);
     })
+}
+
+export async function getAllCategories(token, callback) {
+    axios.get(`https://api.spotify.com/v1/browse/categories/`, {
+        headers: {
+            Authorization: "Bearer " + token
+        },
+        params: {
+            limit: 50
+        }
+    }).then((res) => {
+        callback(res.data.categories.items)
+    }).catch((error) => {
+        console.log(error)
+    });
 }

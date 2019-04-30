@@ -138,7 +138,7 @@ async function getRelatedArtists(artists, token, callback) {
 }
 
 
-async function getCategory(categories, token, callback) {
+async function getPlaylists(categories, token, callback) {
     var allRequests = categories.map((category) => {
         return axios.get(`https://api.spotify.com/v1/browse/categories/${category}/playlists`,
             {
@@ -162,4 +162,4 @@ module.exports.searchTracks = searchTracks;
 module.exports.searchGenres = searchGenres;
 module.exports.getRecommendations = getRecommendations;
 module.exports.getRelatedArtists = getRelatedArtists;
-module.exports.getCategory = getCategory;
+module.exports.getPlaylists = getPlaylists;

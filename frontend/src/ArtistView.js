@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Card, CardHeader, CardBoon, Button } from 'reactstrap';
-import {Overlay} from 'react-bootstrap';
 
 class ArtistView extends Component{
 	constructor(props) {

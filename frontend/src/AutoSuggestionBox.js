@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { searchTracks, searchArtists, searchGenres } from './API_query_functions';
+var genres = require("./genre_seeds");
 
 class AutoSuggestionBox extends Component{
     constructor(props) {
@@ -62,6 +63,7 @@ class AutoSuggestionBox extends Component{
 									class="list-group-item"
                                     key={item.id ? item.id : item}
                                     onClick={(e) => {
+										item = this.props.type === "genres" ? genres.genres[item] : item;
                                         this.props.addInput(this.props.type, item)
 										this.setState({ hidden: true} )
 										this.setState({
@@ -72,10 +74,14 @@ class AutoSuggestionBox extends Component{
 								>
 									{this.props.type !== "genres" && <img src={item.image_url} alt=""/>}
 									{ item && ((this.props.type === "songs") ? (
-										<p>{`${item.name} - ${item.artists.join(", ")}`}</p>
+										<p>
+											{
+												item.artists ? `${item.name} - ${item.artists.join(", ")}` : ""
+											}
+										</p>
 									) : (this.props.type === "artists") ? (
 										<p>{item.name} </p>
-									) : (<p>{item}</p>)
+									) : (<p>{typeof item === "object" ? "" : item}</p>)
                                     )}
 								</li>
 							)

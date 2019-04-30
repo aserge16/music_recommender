@@ -11,7 +11,7 @@ import {
 import './style.css';
 
 import AutoSuggestionBox from './AutoSuggestionBox';
-import { searchTracks, getRecommendations, getRelatedArtists, getCategory } from './API_query_functions';
+import { searchTracks, getRecommendations, getRelatedArtists, getPlaylists } from './API_query_functions';
 
 
 class SearchBox extends Component{
@@ -41,18 +41,21 @@ class SearchBox extends Component{
 
 	typeToSong = () => {
 		this.setState({
+			query: "",
 			currentType: 'songs'
 		})
 	}
 
 	typeToArtist = () => {
 		this.setState({
+			query: "",
 			currentType: 'artists'
 		})
 	}
 
 	typeToGenre = () => {
 		this.setState({
+			query: "",
 			currentType: 'genres'
 		})
 	}
@@ -86,7 +89,7 @@ class SearchBox extends Component{
 		});
 
 
-		getCategory(inputs.genres, token, (result) => {
+		getPlaylists(inputs.genres, token, (result) => {
 			for (var i = 0; i < result.length; i++) {
 				var item = result[i]
 				var playlist = {name:item.name, id:item.id}
