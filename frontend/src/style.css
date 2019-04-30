@@ -157,12 +157,13 @@ i:hover{
 }
 
 .card--content {
-  background-color: #e74c3c;
+  background-color: #0000006b;
   min-width: 200px;
   height: 200px;
   margin: 5px;
   display: inline-block;
   float: none;
+  color: #ddd;
 }
 
 /* .artist-component{
