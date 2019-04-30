@@ -7,7 +7,7 @@ class InputList extends Component{
 		return(
 			<div className="col-3 check-col">
 				<h3>Your Preferences List</h3>
-				<h3>Song Inputs</h3>
+				<h4>Song Inputs</h4>
 				{
 					this.props.songs.map((song) =>
 						<InputListElem
@@ -19,7 +19,7 @@ class InputList extends Component{
 						/>
 					)
 				}
-				<h3>Artist Inputs</h3>
+				<h4>Artist Inputs</h4>
 				{
 					this.props.artists.map((artist) =>
 						<InputListElem
@@ -31,7 +31,7 @@ class InputList extends Component{
 						/>
 					)
 				}
-				<h3>Genre Inputs</h3>
+				<h4>Genre Inputs</h4>
 				{
 					this.props.genres.map((genre) =>
 						<InputListElem
