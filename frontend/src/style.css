@@ -1,6 +1,6 @@
 
 .header{
-  background: linear-gradient(140deg, #1b1d35, #171d58);
+  background: #171d58;
   text-align: center;
   color: #6deb6d;
   top: 0;
@@ -19,7 +19,7 @@ i:hover{
 }
 
 .body {
-  background: linear-gradient(140deg, #1b1d35, #171d58);
+  background: #171d58;
 }
 .search-col{
   width: 100% ;
@@ -166,15 +166,16 @@ i:hover{
   color: #ddd;
 }
 
-/* .artist-component{
-	height: 300px !important; 
-	background-color: lightcoral;
-} */
-/* .genre-component{
-	height: 300px !important; 
-	background-color:;
-} */
-
+.artist--content {
+  background-color: #0000006b;
+  min-width: 200px;
+  height: 200px;
+  margin: 5px;
+  display: inline-block;
+  float: none;
+  color: #ddd;
+  padding-top: 5px;
+}
 
 h2{
   font-family: Arial, Helvetica, sans-serif;

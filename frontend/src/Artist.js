@@ -11,7 +11,7 @@ class Artist extends Component{
 						
 						{
 							this.props.artists.map((artist) => 
-								<div className='card--content' key={artist.id}>
+								<div className='artist--content' key={artist.id}>
 									<h5>{artist.name}</h5>
 									<ArtistView
 										key = {artist.id}
