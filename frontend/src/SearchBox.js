@@ -104,20 +104,27 @@ class SearchBox extends Component{
 				<div className="search-col">
 					<InputGroup className="search-box">
 						<Input onChange={this.updateQuery} />
-						<InputGroupButtonDropdown addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
+						<InputGroupButtonDropdown 
+							addonType="append" 
+							isOpen={this.state.dropdownOpen} 
+							toggle={this.toggleDropDown}
+						>
 							<DropdownToggle caret>
-							{this.state.currentType}
+								{this.state.currentType}
 							</DropdownToggle>
 							<DropdownMenu>
-							<DropdownItem onClick={this.typeToSong}>Song</DropdownItem>
-							<DropdownItem onClick={this.typeToArtist}>Artist</DropdownItem>
-							<DropdownItem onClick={this.typeToGenre}>Genre</DropdownItem>
+								<DropdownItem onClick={this.typeToSong}>Song</DropdownItem>
+								<DropdownItem onClick={this.typeToArtist}>Artist</DropdownItem>
+								<DropdownItem onClick={this.typeToGenre}>Genre</DropdownItem>
 							</DropdownMenu>
 						</InputGroupButtonDropdown>
 					</InputGroup>
 
-					<Button style={{marginLeft: 10,}} onClick={() => this.allRecomendations(this.props.inputs, this.props.token)}>
-						Get
+					<Button 
+						style={{marginLeft: 10,}} 
+						onClick={() => this.allRecomendations(this.props.inputs, this.props.token)}
+					>
+						Show Results
 					</Button>
 
 				</div>

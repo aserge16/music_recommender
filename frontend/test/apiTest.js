@@ -1,7 +1,7 @@
 const assert = require("assert");
 const API = require("../API_for_test");
 
-const token = "BQCLJz7qHggiIXK0-Ttdxa1KzfRc1x3aVpCsZxSg_OGjvradpCvvc3qorlbUDng0wux3B-nQjecOp_t-F2c";
+const token = "BQBL3aiDLr7Er9dNj_-JcUVWELo71URF2DugJVBkzfBvDmDW82R9eviVMsgFaPnJdpYbuZBLKUTGgFGufq0";
 
 describe('searchArtists', function() {
     it('searchArtists results have the right format', function() {
@@ -51,7 +51,7 @@ describe('searchTracks', function() {
 
 describe('searchGenres', function() {
     it('searchGenres results have the right format', function() {
-        API.searchGenres("rock", (genres) => {
+        API.searchGenres("k-pop", (genres) => {
             genres.forEach((genre) => {
                 assert.equal(typeof genre, "string");
             })

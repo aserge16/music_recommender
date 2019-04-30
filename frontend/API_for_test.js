@@ -57,7 +57,8 @@ async function searchTracks(searchItem, token, callback) {
 
 async function searchGenres(searchItem, callback) {
     searchItem = searchItem.toLowerCase();
-    var results = genres.genres.filter((genre) => genre.search(searchItem) !== -1)
+    var allGenres = Object.keys(genres.genres)
+    var results = allGenres.filter((genre) => genre.toLowerCase().search(searchItem) !== -1)
     callback(results)
 }
 

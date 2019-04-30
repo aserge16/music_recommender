@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './style.css';
-import {Button} from 'reactstrap';
 
 class InputListElem extends Component{
 	render() {
@@ -12,13 +11,10 @@ class InputListElem extends Component{
 						: <p>{this.props.elem}</p>
 					}
 				</div>
-				
-				{/* <Button 
-					className="col-2"
+				<i 
+					className="fas fa-times-circle" 
 					onClick={() => this.props.removeInput(this.props.type, this.props.id)}
-				> */}
-				<i class="fas fa-times-circle" onClick={() => this.props.removeInput(this.props.type, this.props.id)}></i>
-				{/* </Button> */}
+				/>
 			</div>
 		);
 	}

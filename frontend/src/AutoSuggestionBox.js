@@ -20,7 +20,6 @@ class AutoSuggestionBox extends Component{
 		}
 		
 		// start searching for auto-suggestion when user types in a search query
-		// if (this.props.query !== "" && this.props.query !== prevProps.query) {
 		if (this.props.query !== prevProps.query) {
 			clearTimeout(this.state.timeoutID);
 
