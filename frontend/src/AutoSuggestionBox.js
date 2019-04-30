@@ -60,7 +60,7 @@ class AutoSuggestionBox extends Component{
 						this.state.searchResults.map((item) => {
 							return (
 								<li 
-									class="list-group-item"
+									className ="list-group-item"
                                     key={item.id ? item.id : item}
                                     onClick={(e) => {
 										item = this.props.type === "genres" ? genres.genres[item] : item;
